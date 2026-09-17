@@ -1674,6 +1674,51 @@ button {
   color: var(--muted);
 }
 
+/* Circular client avatar with gradient ring */
+.testi-person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.testi-person .testi-avatar,
+.testi-person .testi-avatar-init {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  margin-bottom: 0;
+  border-radius: 50%;
+  border: 3px solid var(--white);
+  background: var(--grad);
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(99, 76, 182, .28);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+
+.testi-person .testi-avatar-init {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+.testi-person-info strong {
+  color: var(--navy);
+  font-size: .98rem;
+}
+
+.testi-person-info span {
+  display: block;
+  font-size: .82rem;
+  color: var(--muted);
+}
+
+.testi-card:hover .testi-person .testi-avatar,
+.testi-card:hover .testi-person .testi-avatar-init {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 6px 18px rgba(99, 76, 182, .4);
+}
+
 /* ---------- Blogs ---------- */
 .blogs {
   background: var(--lav-3);
@@ -3224,6 +3269,19 @@ button {
 
 .step-body p {
   font-size: .95rem;
+}
+
+.step-body .step-deliv {
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: var(--lav-2);
+  border-left: 3px solid var(--primary);
+  border-radius: 8px;
+  font-size: .88rem;
+}
+
+.step-body .step-deliv strong {
+  color: var(--primary);
 }
 
 /* ---------- FAQ accordion ---------- */
