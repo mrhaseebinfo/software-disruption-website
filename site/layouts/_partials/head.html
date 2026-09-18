@@ -5,11 +5,13 @@
 {{- if and (not .IsPage) (eq .Kind "section") }}{{ with .Paginator }}{{ if gt .TotalPages 1 }}{{ $url = .URL }}{{ end }}{{ end }}{{ end -}}
 {{- $depth := sub (len (split $url "/")) 2 -}}
 {{- if gt $depth 0 }}{{ $pre = strings.Repeat $depth "../" }}{{ else }}{{ $pre = "./" }}{{ end -}}
+{{- $pre = trim $pre "/" -}}{{- if $pre }}{{ $pre = printf "%s/" $pre }}{{ end -}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="sdBase" name="sd-base" content="{{ $pre }}">
   <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | SoftwareDisruption Dubai{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
   {{ with .Params.featured_image }}
