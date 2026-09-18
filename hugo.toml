@@ -19,6 +19,10 @@ publishDir = "."
 relativeURLs = true
 canonicalizeURLs = true
 
+# Suppress the .hugo_build.lock marker file: this repo deploys from a
+# plain static checkout, so concurrent builds are never a concern here.
+noBuildLock = true
+
 # Only the blog is managed by Hugo. Everything else already exists
 # as static HTML at the repo root, so disable Hugo's own homepage
 # and avoid emitting files that could clash with it.

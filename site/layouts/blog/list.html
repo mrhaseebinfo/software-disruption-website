@@ -1,14 +1,21 @@
 {{- define "main" }}
-{{- $pre := "../" -}}
-<section class="page-hero"><div class="container">
-    <nav class="breadcrumb"><a href="{{ $pre }}index.html">Home</a><span class="sep">&#8250;</span><span class="bc-cur">Blog</span></nav>
+{{- $url := .RelPermalink -}}
+{{- with .Paginator }}{{ if gt .TotalPages 1 }}{{ $url = .URL }}{{ end }}{{ end -}}
+{{- $pre := strings.Repeat (sub (len (split $url "/")) 2) "../" -}}
+<section class="page-hero">
+  <div class="container">
+    <nav class="breadcrumb"><a href="{{ $pre }}index.html">Home</a><span class="sep">&#8250;</span><span
+        class="bc-cur">Blog</span></nav>
     <h1>Insights & Resources</h1>
-    <p class="lead">Practical writing on software engineering, AI, data platforms, and the technology regulation shaping the GCC — from engineers who ship.</p>
-  </div></section>
-  <section class="section blogs" style="padding-top:40px"><div class="container">
+    <p class="lead">Practical writing on software engineering, AI, data platforms, and the technology regulation shaping
+      the GCC — from engineers who ship.</p>
+  </div>
+</section>
+<section class="section blogs" style="padding-top:40px">
+  <div class="container">
     <div class="blog-grid">
       {{- range .Paginator.Pages }}
-        {{- partial "blog-card.html" . }}
+      {{- partial "blog-card.html" . }}
       {{- end }}
     </div>
     {{- /* ---- Pagination ---- */}}
@@ -21,11 +28,11 @@
       {{- end }}
       <ul class="pg-list">
         {{- range .Paginator.Pagers }}
-          {{- if eq .PageNumber $.Paginator.PageNumber }}
-            <li><span class="pg-num pg-current" aria-current="page">{{ .PageNumber }}</span></li>
-          {{- else }}
-            <li><a class="pg-num" href="{{ .URL }}">{{ .PageNumber }}</a></li>
-          {{- end }}
+        {{- if eq .PageNumber $.Paginator.PageNumber }}
+        <li><span class="pg-num pg-current" aria-current="page">{{ .PageNumber }}</span></li>
+        {{- else }}
+        <li><a class="pg-num" href="{{ .URL }}">{{ .PageNumber }}</a></li>
+        {{- end }}
         {{- end }}
       </ul>
       {{- if .Paginator.HasNext }}
@@ -35,5 +42,6 @@
       {{- end }}
     </nav>
     {{- end }}
-  </div></section>
+  </div>
+</section>
 {{- end }}
