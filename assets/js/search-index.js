@@ -211,27 +211,6 @@ window.SEARCH_INDEX = [
   "d": "Insights & resources"
  },
  {
-  "t": "ZATCA E-Invoicing Penalties Saudi Arabia",
-  "u": "blog/e-invoicing-penalties-saudi-arabia/index.html",
-  "k": "zatca e-invoicing fatoora ksa tax article 45 fines compliance",
-  "c": "Page",
-  "d": "What ZATCA non-compliance actually costs you"
- },
- {
-  "t": "IT Staff Augmentation Saudi Arabia Cost",
-  "u": "blog/it-staff-augmentation-saudi-arabia/index.html",
-  "k": "staff augmentation hiring gosi iqama levy cost ksa",
-  "c": "Page",
-  "d": "Real cost of hiring in-house vs augmented team"
- },
- {
-  "t": "Rust vs C++",
-  "u": "blog/rust-vs-cpp/index.html",
-  "k": "rust cpp memory safety performance cisa programming languages",
-  "c": "Page",
-  "d": "Performance, memory management and safety"
- },
- {
   "t": "Case Studies",
   "u": "case-studies/index.html",
   "k": "case studies portfolio work projects",
@@ -279,5 +258,54 @@ window.SEARCH_INDEX = [
   "k": "terms of service legal",
   "c": "Page",
   "d": "Terms of service"
+ },
+ {
+  "t": "AI Readiness for GCC Enterprises: Fix Your Data Before You Buy the Model",
+  "u": "blog/ai-readiness-gcc-enterprises/index.html",
+  "k": "ai readiness gcc enterprises data quality governance use cases model",
+  "c": "Blog",
+  "d": "Most AI pilots in the Gulf fail on data, not models. A readiness checklist — data quality, access, governance."
+ },
+ {
+  "t": "Data Residency in the UAE and KSA: A Practical Compliance Map for 2026",
+  "u": "blog/data-residency-uae-ksa-compliance/index.html",
+  "k": "data residency uae ksa compliance pdpl multi-region architecture regulator",
+  "c": "Blog",
+  "d": "Where your data must live, which regulator cares, and how to design multi-region architectures."
+ },
+ {
+  "t": "E-Invoicing Penalties in Saudi Arabia: What ZATCA Non-Compliance Actually Costs You",
+  "u": "blog/e-invoicing-penalties-saudi-arabia/index.html",
+  "k": "zatca e-invoicing fatoora ksa tax article 45 fines compliance",
+  "c": "Blog",
+  "d": "What ZATCA non-compliance actually costs you"
+ },
+ {
+  "t": "IT Staff Augmentation in Saudi Arabia: The Real Cost of Hiring In-House vs. an Augmented Team",
+  "u": "blog/it-staff-augmentation-saudi-arabia/index.html",
+  "k": "staff augmentation hiring gosi iqama levy cost ksa",
+  "c": "Blog",
+  "d": "Real cost of hiring in-house vs augmented team"
+ },
+ {
+  "t": "Odoo Implementation Guide: Phases, Costs and Pitfalls in the GCC",
+  "u": "blog/odoo-implementation-guide/index.html",
+  "k": "odoo implementation guide phases costs pitfalls gcc uae ksa zatca data migration erp",
+  "c": "Blog",
+  "d": "A phased Odoo implementation guide for UAE and Saudi Arabia businesses — scope, data migration, ZATCA e-invoicing readiness."
+ },
+ {
+  "t": "How to Re-Architect Your SaaS Platform for KSA PDPL",
+  "u": "blog/re-architect-saas-ksa-pdpl/index.html",
+  "k": "re-architect saas ksa pdpl privacy data mapping user rights consent encryption",
+  "c": "Blog",
+  "d": "Your architecture has to prove what the policy claims — data mapping, user rights, consent, encryption by design."
+ },
+ {
+  "t": "Rust vs C++",
+  "u": "blog/rust-vs-cpp/index.html",
+  "k": "rust cpp memory safety performance cisa programming languages",
+  "c": "Blog",
+  "d": "Performance, memory management and safety"
  }
 ];

@@ -6,9 +6,11 @@
   "use strict";
 
   var pre = (function () {
-    // derive depth from path: /services/x/index.html → 2 levels below root
+    // explicit base injected per page, e.g. "…/", "../", "../../", ""
+    var el = document.getElementById("sdBase");
+    if (el && el.getAttribute("content")) return el.getAttribute("content");
+    // fallback: derive depth from path (…/folder/index.html → one "../" per level)
     var parts = location.pathname.replace(/\/index\.html$/, "").split("/").filter(Boolean);
-    // if last segment is a page folder (index.html stripped), it's still 1 folder deep per level
     return parts.map(function () { return "../"; }).join("");
   })();
 
@@ -161,7 +163,7 @@
       .slice(0, 8);
 
     if (!hits.length) {
-      searchResults.innerHTML = '<div class="search-empty">No results for "' + q.replace(/[<>"]/g, "") + '". Try a different term or <a href="' + pre + 'contact-us.html">contact us</a>.</div>';
+      searchResults.innerHTML = '<div class="search-empty">No results for "' + q.replace(/[<>"]/g, "") + '". Try a different term or <a href="' + pre + 'contact/index.html">contact us</a>.</div>';
       return;
     }
     searchResults.innerHTML = hits.map(function (r) {
