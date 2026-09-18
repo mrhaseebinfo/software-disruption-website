@@ -1,0 +1,21 @@
+{{- $pre := "" -}}
+{{- if .IsPage }}{{ $pre = "../../" }}{{ else if eq .Kind "term" }}{{ $pre = "../../" }}{{ else }}{{ $pre = "../" }}{{ end -}}
+{{- $img := "" -}}
+{{- with .Params.featured_image }}{{ $img = . }}{{ end -}}
+<article class="blog-card reveal">
+  <a class="blog-thumb" href="{{ .RelPermalink }}">
+    {{- if $img }}
+    <img src="{{ $img }}" alt="{{ .Title }}" loading="lazy">
+    {{- else }}
+    <div class="ph-blog {{ with .Params.thumb_class }}{{ . }}{{ end }}"></div>
+    {{- end }}
+    <span>{{ with .Params.primary_tag }}{{ . }}{{ else }}{{ with .Params.tags }}{{ index . 0 }}{{ end }}{{ end }}</span>
+  </a>
+  <div class="blog-body">
+    <span class="blog-cat">{{ with .Params.primary_tag }}{{ . }}{{ else }}{{ with .Params.tags }}{{ index . 0 }}{{ end }}{{ end }}</span>
+    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+    <p class="blog-meta">by <strong>{{ .Params.author | default "Software Disruption" }}</strong> &middot; {{ .Date.Format "January 2, 2006" }} &middot; {{ .ReadingTime }} min read</p>
+    <p>{{ .Summary | truncate 160 }}</p>
+    <a class="link-more" href="{{ .RelPermalink }}">Read More <span>&#8594;</span></a>
+  </div>
+</article>

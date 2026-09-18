@@ -1,0 +1,22 @@
+{{- $pre := "" -}}
+{{- if .IsPage }}{{ $pre = "../../" }}{{ else if eq .Kind "term" }}{{ $pre = "../../" }}{{ else }}{{ $pre = "../" }}{{ end -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | SoftwareDisruption Dubai{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  {{ with .Params.featured_image }}
+  <meta property="og:image" content="{{ . }}">
+  {{ end }}
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{{ $pre }}assets/img/loggo.png">
+  <link rel="stylesheet" href="{{ $pre }}assets/css/style.css">
+  <script>document.documentElement.className += " js-anim";</script>
+</head>
+<body>

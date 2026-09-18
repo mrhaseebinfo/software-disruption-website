@@ -1,0 +1,39 @@
+{{- define "main" }}
+{{- $pre := "../" -}}
+<section class="page-hero"><div class="container">
+    <nav class="breadcrumb"><a href="{{ $pre }}index.html">Home</a><span class="sep">&#8250;</span><span class="bc-cur">Blog</span></nav>
+    <h1>Insights & Resources</h1>
+    <p class="lead">Practical writing on software engineering, AI, data platforms, and the technology regulation shaping the GCC — from engineers who ship.</p>
+  </div></section>
+  <section class="section blogs" style="padding-top:40px"><div class="container">
+    <div class="blog-grid">
+      {{- range .Paginator.Pages }}
+        {{- partial "blog-card.html" . }}
+      {{- end }}
+    </div>
+    {{- /* ---- Pagination ---- */}}
+    {{- if gt .Paginator.TotalPages 1 }}
+    <nav class="pagination" aria-label="Blog pages">
+      {{- if .Paginator.HasPrev }}
+      <a class="pg-link" href="{{ .Paginator.Prev.URL }}">&larr; Newer</a>
+      {{- else }}
+      <span class="pg-link pg-disabled" aria-disabled="true">&larr; Newer</span>
+      {{- end }}
+      <ul class="pg-list">
+        {{- range .Paginator.Pagers }}
+          {{- if eq .PageNumber $.Paginator.PageNumber }}
+            <li><span class="pg-num pg-current" aria-current="page">{{ .PageNumber }}</span></li>
+          {{- else }}
+            <li><a class="pg-num" href="{{ .URL }}">{{ .PageNumber }}</a></li>
+          {{- end }}
+        {{- end }}
+      </ul>
+      {{- if .Paginator.HasNext }}
+      <a class="pg-link" href="{{ .Paginator.Next.URL }}">Older &rarr;</a>
+      {{- else }}
+      <span class="pg-link pg-disabled" aria-disabled="true">Older &rarr;</span>
+      {{- end }}
+    </nav>
+    {{- end }}
+  </div></section>
+{{- end }}

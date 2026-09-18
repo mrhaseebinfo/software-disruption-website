@@ -1,0 +1,79 @@
+{{- define "main" }}
+{{- $pre := "../../" -}}
+{{- $wpm := site.Params.readingSpeed | default 200 -}}
+
+{{- /* ---------- Related posts: same tags first, then latest ---------- */}}
+{{- $related := slice -}}
+{{- $first := slice -}}
+{{- with .Params.tags }}{{ $first = . }}{{ end -}}
+{{- range $first }}
+  {{- range where (where site.RegularPages "Type" "blog") "IsPage" true }}
+    {{- if and (ne . $.RelPermalink) (in .Params.tags $) }}
+      {{- $related = $related | append . }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+{{- $related = $related | uniq | first 3 }}
+{{- if lt (len $related) 3 }}
+  {{- range first 3 (where site.RegularPages "Type" "blog") }}
+    {{- if and (ne . $.RelPermalink) (not (in $related .)) }}
+      {{- $related = $related | append . | first 3 }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+<section class="article-hero"><div class="container">
+    <nav class="breadcrumb"><a href="{{ $pre }}index.html">Home</a><span class="sep">&#8250;</span><a href="{{ $pre }}blog/index.html">Blog</a></nav>
+    {{- with index .Params.tags 0 }}
+    <span class="article-tag">{{ . }}</span>
+    {{- end }}
+    <h1>{{ .Title }}</h1>
+    <div class="article-meta">
+      <span>by <strong>{{ .Params.author | default "Software Disruption" }}</strong></span>
+      <span>{{ .Date.Format "January 2, 2006" }}</span>
+      <span><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> {{ .ReadingTime }} min read</span>
+    </div>
+    {{- with .Params.featured_image }}
+    <figure class="article-featured"><img src="{{ . }}" alt="{{ $.Title }}" loading="eager"></figure>
+    {{- end }}
+  </div></section>
+  <div class="article-body">
+      {{ .Content }}
+      {{- with .Params.tags }}
+      <div class="article-tags-row">
+        <span class="at-label">Tags:</span>
+        {{- range . }}
+        <a class="tag-chip" href="{{ $pre }}blog/tags/{{ . | urlize }}/">#{{ . }}</a>
+        {{- end }}
+      </div>
+      {{- end }}
+      <div class="article-author-box">
+        <span class="author-avatar" aria-hidden="true">{{ with .Params.author }}{{ index (split . " ") 0 | slice 0 1 }}{{ end }}</span>
+        <div>
+          <p class="author-name">Written by <strong>{{ .Params.author | default "Software Disruption" }}</strong></p>
+          <p class="author-bio">Software Disruption – FZCO, Dubai. Building data platforms, AI systems, and compliance-grade software across the GCC.</p>
+        </div>
+      </div>
+  </div>
+  <div class="post-nav">
+    <a href="{{ $pre }}blog/index.html"><span>&#8592; Back to</span><strong>All Articles</strong></a>
+    <a class="next" href="{{ $pre }}contact/index.html"><span>Ready to build?</span><strong>Get a Free Consultation &#8594;</strong></a>
+  </div>
+  {{- if $related }}
+  <section class="section related-posts"><div class="container">
+    <span class="eyebrow center">Keep Reading</span>
+    <h2 class="section-title">Related Articles</h2>
+    <div class="blog-grid">
+      {{- range $related }}
+        {{- partial "blog-card.html" . }}
+      {{- end }}
+    </div>
+  </div></section>
+  {{- end }}
+  <section class="section cta-band"><div class="container" style="text-align:center;max-width:880px">
+    <span class="eyebrow light center">Ready to Disrupt Digitally</span>
+    <h2 class="section-title">Ready to Disrupt Digitally</h2>
+    <p class="lead" style="margin-bottom:34px">Schedule your free consultation and start building smarter, scalable solutions.</p>
+    <div class="hero-cta-row" style="justify-content:center"><a class="btn btn-orange btn-lg" href="{{ $pre }}contact/index.html">Book free consultation</a><a class="btn btn-ghost-light btn-lg" href="tel:+971557529787">+971-557529787</a></div>
+  </div></section>
+{{- end }}
