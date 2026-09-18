@@ -67,7 +67,7 @@ module.exports = {
       <span class="eyebrow center">What Sets Us Apart</span>
       <h2 class="section-title center">A Partner Committed to <span class="grad-text">Excellence</span></h2>
       <p class="section-sub">The wrong choice means missed deadlines, budget overruns, and software that doesn't work when it matters. The right choice means a team that operates as an extension of yours — delivering on time, communicating transparently, and engineering software that performs in production, not just in demos.</p>
-      <div class="values-grid" style="grid-template-columns:repeat(3,1fr)">
+      <div class="values-grid">
         <article class="value-card reveal"><div class="value-icon">⚙️</div><h3>Full-Stack Engineering Excellence</h3><p>We deliver end-to-end software solutions with expertise across front-end, back-end, databases, integrations, and cloud systems — engineered for performance, intuitive UX, and long-term scalability.</p></article>
         <article class="value-card reveal"><div class="value-icon">🗣️</div><h3>Clear, Proactive &amp; Transparent Communication</h3><p>We work closely with all stakeholders, provide timely updates, and maintain complete transparency at every stage — enabling smooth collaboration, faster decisions, and stronger trust.</p></article>
         <article class="value-card reveal"><div class="value-icon">🏆</div><h3>Uncompromising Quality at Every Stage</h3><p>Every workflow refined, every feature thoroughly tested, every release optimized. The result is reliable, high-performing software that exceeds expectations.</p></article>
