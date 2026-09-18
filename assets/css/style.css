@@ -4797,7 +4797,7 @@ body.is-loading .hero-visual {
   }
 
   body.nav-open::after {
-    z-index: 1400;
+    z-index: 998;
   }
 }
 
