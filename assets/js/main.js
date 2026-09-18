@@ -6,9 +6,9 @@
   "use strict";
 
   var pre = (function () {
-    // explicit base injected per page, e.g. "…/", "../", "../../", ""
+    // explicit base injected per page: "" at root, "../", "../../", etc.
     var el = document.getElementById("sdBase");
-    if (el && el.getAttribute("content")) return el.getAttribute("content");
+    if (el && el.hasAttribute("content")) return el.getAttribute("content");
     // fallback: derive depth from path (…/folder/index.html → one "../" per level)
     var parts = location.pathname.replace(/\/index\.html$/, "").split("/").filter(Boolean);
     return parts.map(function () { return "../"; }).join("");
