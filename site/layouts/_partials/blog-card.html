@@ -1,7 +1,9 @@
 {{- $pre := "" -}}
 {{- if .IsPage }}{{ $pre = "../../" }}{{ else if eq .Kind "term" }}{{ $pre = "../../" }}{{ else }}{{ $pre = "../" }}{{ end -}}
 {{- $img := "" -}}
-{{- with .Params.featured_image }}{{ $img = . }}{{ end -}}
+{{- with .Params.featured_image -}}
+  {{- if fileExists (strings.TrimPrefix "/" .) }}{{ $img = . }}{{ end -}}
+{{- end -}}
 <article class="blog-card reveal">
   <a class="blog-thumb" href="{{ .RelPermalink }}">
     {{- if $img }}

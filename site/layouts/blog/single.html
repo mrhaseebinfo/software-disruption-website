@@ -33,8 +33,13 @@
       <span>{{ .Date.Format "January 2, 2006" }}</span>
       <span><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> {{ .ReadingTime }} min read</span>
     </div>
+    {{- /* Featured image — only render if the file actually exists,
+           otherwise the gradient fallback below keeps the page clean. */}}
     {{- with .Params.featured_image }}
-    <figure class="article-featured"><img src="{{ . }}" alt="{{ $.Title }}" loading="eager"></figure>
+      {{- $imgPath := strings.TrimPrefix "/" . -}}
+      {{- if fileExists $imgPath }}
+      <figure class="article-featured"><img src="{{ . }}" alt="{{ $.Title }}" loading="eager"></figure>
+      {{- end }}
     {{- end }}
   </div></section>
   <div class="article-body">

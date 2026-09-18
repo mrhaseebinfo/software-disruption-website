@@ -1956,6 +1956,7 @@ button {
 }
 
 @media (max-width: 768px) {
+
   .contact-banner,
   .book-consultation {
     margin-top: -46px;
@@ -5194,5 +5195,194 @@ body.is-loading .hero-visual {
 
   .flip-face {
     padding: 28px 22px;
+  }
+}
+/* =====================================================================
+   Hugo blog extensions — appended (additive only; existing rules above
+   are untouched). Pagination, tag chips, author box, featured image,
+   related posts grid.
+   ===================================================================== */
+
+/* ---------- Pagination ---------- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.pg-list {
+  display: flex;
+  list-style: none;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.pg-link,
+.pg-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--white);
+  color: var(--navy);
+  font-size: .9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .25s var(--ease);
+}
+
+.pg-link:hover,
+.pg-num:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.pg-num.pg-current {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.pg-link.pg-disabled {
+  opacity: .45;
+  pointer-events: none;
+}
+
+/* ---------- Tag chips (single post + tag archives) ---------- */
+.article-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 46px 0 6px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+
+.article-tags-row .at-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tag-chip {
+  display: inline-block;
+  background: var(--lav);
+  color: var(--primary);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all .25s var(--ease);
+}
+
+.tag-chip:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.all-tags-row {
+  margin-top: 48px;
+  text-align: center;
+  font-size: .9rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---------- Featured image in article hero ---------- */
+.article-featured {
+  margin: 26px 0 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.article-featured img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 16 / 8.5;
+  object-fit: cover;
+}
+
+.article-meta .ico {
+  vertical-align: -2px;
+  margin-right: 5px;
+}
+
+/* ---------- Author box ---------- */
+.article-author-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 40px 0 0;
+  padding: 24px 26px;
+  background: var(--lav-2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.author-avatar {
+  flex: 0 0 52px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: .5px;
+}
+
+.author-name {
+  font-size: .95rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.author-name strong {
+  color: var(--primary-deep);
+}
+
+.author-bio {
+  font-size: .88rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ---------- Related posts ---------- */
+.related-posts {
+  background: var(--lav-3);
+  padding: 90px 0 100px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 700px) {
+  .pagination {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .article-featured img {
+    aspect-ratio: 16 / 10;
+  }
+  .article-author-box {
+    flex-direction: column;
   }
 }
