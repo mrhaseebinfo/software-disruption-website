@@ -52,7 +52,6 @@ body {
 
 img,
 svg {
-  max-width: 100%;
   display: inline-block;
   vertical-align: middle;
 }
@@ -1081,7 +1080,18 @@ button {
   flex-direction: column;
   transition: all .35s var(--ease);
   position: relative;
+  overflow: hidden;
 }
+
+.service-card .service-img {
+  display: block;
+  width: calc(100% + 56px);
+  margin: -34px -28px 24px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 18px 18px 0 0;
+}
+
 
 .service-card::after {
   content: "";
