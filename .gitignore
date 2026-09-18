@@ -1,0 +1,4 @@
+
+# Hugo internal build artifacts
+.hugo_build.lock
+

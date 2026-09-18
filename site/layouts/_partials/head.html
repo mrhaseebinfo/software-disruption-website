@@ -1,0 +1,27 @@
+{{- /* Relative root prefix derived from URL depth: /blog/ -> ../ , /blog/<slug>/ -> ../../ ,
+       /blog/page/2/ and /blog/tags/<tag>/ -> ../../../ . Robust for any page. */}}
+{{- $pre := "" -}}
+{{- $url := .RelPermalink -}}
+{{- if and (not .IsPage) (eq .Kind "section") }}{{ with .Paginator }}{{ if gt .TotalPages 1 }}{{ $url = .URL }}{{ end }}{{ end }}{{ end -}}
+{{- $depth := sub (len (split $url "/")) 2 -}}
+{{- if gt $depth 0 }}{{ $pre = strings.Repeat $depth "../" }}{{ else }}{{ $pre = "./" }}{{ end -}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | SoftwareDisruption Dubai{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+  {{ with .Params.featured_image }}
+  <meta property="og:image" content="{{ . }}">
+  {{ end }}
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{{ $pre }}assets/img/loggo.png">
+  <link rel="stylesheet" href="{{ $pre }}assets/css/style.css">
+  <script>document.documentElement.className += " js-anim";</script>
+</head>
+<body>

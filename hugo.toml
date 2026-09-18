@@ -1,0 +1,88 @@
+# =====================================================================
+# Hugo — drives ONLY the /blog section.
+# The rest of the website remains plain HTML/CSS/JS, untouched.
+#
+# Publishes directly into this repo root so blog URLs stay exactly:
+#   /blog/index.html            (list, paginated: /blog/page/1/ ...)
+#   /blog/<slug>/index.html     (single posts)
+#   /blog/tags/<tag>/index.html (tag archives)
+# =====================================================================
+
+baseURL = "/"
+title = "SoftwareDisruption Dubai"
+
+# Publish into the repo root, merging with the existing static site.
+publishDir = "."
+
+# The static site uses root-relative folder URLs that work from any
+# subpath — make Hugo emit relative links the same way.
+relativeURLs = true
+canonicalizeURLs = true
+
+# Suppress the .hugo_build.lock marker file: this repo deploys from a
+# plain static checkout, so concurrent builds are never a concern here.
+noBuildLock = true
+
+# Only the blog is managed by Hugo. Everything else already exists
+# as static HTML at the repo root, so disable Hugo's own homepage
+# and avoid emitting files that could clash with it.
+disableKinds = ["home", "RSS", "sitemap", "robotsTXT", "404"]
+
+# Taxonomy term pages (tags) stay enabled. The taxonomy LIST page
+# itself (/tags/) is suppressed by pointing it at the blog list.
+[taxonomies]
+  tag = "tags"
+
+# Site source lives under site/ so Hugo never touches the static
+# HTML/CSS/JS that makes up the rest of the website.
+[module]
+  [[module.mounts]]
+    source = "site/content"
+    target = "content"
+  [[module.mounts]]
+    source = "site/layouts"
+    target = "layouts"
+
+[pagination]
+  pagerSize = 6          # posts per page on /blog/
+  path = "page"
+
+# Permalink patterns — Hugo 0.141+ array-of-tables syntax.
+# Pages of type blog -> /blog/<slug>/
+# Tag term pages     -> /blog/tags/<tag>/
+[[permalinks]]
+  pattern = "/blog/:slug/"
+  [permalinks.target]
+    kind = "page"
+    path = "/{blog,blog/**}"
+
+[[permalinks]]
+  pattern = "/blog/tags/:slug/"
+  [permalinks.target]
+    kind = "term"
+    path = "/{tags,tags/**}"
+
+[params]
+  description = "Insights on software engineering, AI, data platforms, and technology regulation in the GCC — from the Software Disruption team."
+  # Reading speed used for the "x min read" label (words per minute)
+  readingSpeed = 200
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true      # allow raw HTML inside Markdown posts
+  [markup.highlight]
+    style = "monokai"
+    lineNos = false
+
+[outputs]
+  term = ["HTML"]
+
+[imaging]
+  [imaging.jpeg]
+    quality = 85
+
+[minify]
+  disableHTML = true     # keep output diff-friendly / readable
+  disableCSS = false
+  disableJS = false
