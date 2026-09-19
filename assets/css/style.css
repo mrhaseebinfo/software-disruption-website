@@ -1371,6 +1371,16 @@ button {
   font-size: clamp(1.6rem, 2.8vw, 2.2rem);
 }
 
+.split-img .ind-img {
+  display: block;
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  background: var(--ph-bg, var(--primary-deep));
+}
+
 .ph-grad {
   border-radius: 20px;
   display: grid;
@@ -2735,6 +2745,10 @@ button {
   }
 
   .ph-tall {
+    height: 280px;
+  }
+
+  .ind-img {
     height: 280px;
   }
 
