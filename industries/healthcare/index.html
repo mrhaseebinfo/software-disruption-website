@@ -180,13 +180,41 @@
     <span class="eyebrow center">FAQs</span>
     <h2 class="section-title center">Healthcare Technology in the GCC: <span class="grad-text">Frequently Asked Questions</span></h2>
     <div class="faq-list">
-      <div class="faq-item"><button class="faq-q">Can patient data from the UAE be stored on global cloud platforms?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><p>Generally no — not outside the UAE. UAE Federal Law No. 2 of 2019 requires health data to be stored and processed within the country except in specifically approved cases. In practice this means using in-country cloud regions (AWS, Azure, and GCP all operate UAE regions) or on-premise infrastructure, with architecture that prevents data from transiting foreign regions. We design every UAE healthcare system around this constraint from the start.</p></div></div>
-      <div class="faq-item"><button class="faq-q">What is ADHICS and does it apply to software vendors?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><p>ADHICS (Abu Dhabi Healthcare Information and Cyber Security) is the Department of Health Abu Dhabi’s mandatory information security standard for healthcare entities. It applies to the systems healthcare organisations run — which means any vendor building or operating those systems must implement and evidence its controls. We build ADHICS-aligned architectures and generate the audit evidence (access logs, change records, configuration baselines) reviewers require.</p></div></div>
-      <div class="faq-item"><button class="faq-q">What are NABIDH, Malaffi, and Riayati?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><p>They are the UAE’s health information exchange platforms: NABIDH is Dubai Health Authority’s HIE for Dubai providers, Malaffi is the Department of Health Abu Dhabi’s HIE, and Riayati is the Ministry of Health’s national platform connecting them. Licensed providers are required to connect and submit clinical data. We build and maintain the integration feeds — typically HL7 v2 and FHIR-based — that keep providers compliant and their data flowing.</p></div></div>
-      <div class="faq-item"><button class="faq-q">What is NPHIES and why does it matter for Saudi healthcare organisations?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><p>NPHIES is Saudi Arabia’s national platform for health insurance exchange services, standardising how providers and insurers exchange eligibility, claims, and clinical information. It reshapes payer and provider data operations: organisations need standards-compliant data pipelines, integration engineering, and analytics that work with NPHIES data structures. We help both providers and insurers build NPHIES-ready platforms.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Can you build AI systems that handle Arabic clinical text?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><p>Yes. Arabic clinical NLP is a core capability — including mixed Arabic-English records, dialect variation in patient communication, and right-to-left interface design. Where data residency prevents using global AI APIs, we deploy fine-tuned open-weight models inside UAE or Saudi infrastructure, so language capability doesn’t come at the cost of compliance.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Do you work with healthcare startups or only large providers?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><p>Both. Health-tech startups engage us for compliant-by-design architecture, product leadership, and engineering capacity — avoiding the compliance debt that kills funding rounds and procurement deals later. Hospital groups, insurers, and government entities engage us for enterprise data platforms, integration, and transformation programs.</p></div></div>
-      <div class="faq-item"><button class="faq-q">How do you handle clinical safety in AI and analytics work?<span class="faq-arrow">&#9662;</span></button><div class="faq-a"><p>Through explainability, human oversight, and monitoring as non-negotiables: models ship with interpretability documentation, clinical stakeholders validate logic before deployment, decision-support outputs are advisory to clinicians rather than autonomous, and production monitoring detects drift before it becomes a safety issue. We treat a degrading healthcare model as an incident, not a backlog item.</p></div></div>
+      <div class="faq-item"><button class="faq-q" type="button">Can patient data from the UAE be stored on global cloud platforms?<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Generally no — not outside the UAE. UAE Federal Law No. 2 of 2019 requires health data to be stored and processed within the country except in specifically approved cases. In practice this means using in-country cloud regions (AWS, Azure, and GCP all operate UAE regions) or on-premise infrastructure, with architecture that prevents data from transiting foreign regions. We design every UAE healthcare system around this constraint from the start.</div>
+        </div>
+      </div>
+      <div class="faq-item"><button class="faq-q" type="button">What is ADHICS and does it apply to software vendors?<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <div class="faq-a-inner">ADHICS (Abu Dhabi Healthcare Information and Cyber Security) is the Department of Health Abu Dhabi’s mandatory information security standard for healthcare entities. It applies to the systems healthcare organisations run — which means any vendor building or operating those systems must implement and evidence its controls. We build ADHICS-aligned architectures and generate the audit evidence (access logs, change records, configuration baselines) reviewers require.</div>
+        </div>
+      </div>
+      <div class="faq-item"><button class="faq-q" type="button">What are NABIDH, Malaffi, and Riayati?<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <div class="faq-a-inner">They are the UAE’s health information exchange platforms: NABIDH is Dubai Health Authority’s HIE for Dubai providers, Malaffi is the Department of Health Abu Dhabi’s HIE, and Riayati is the Ministry of Health’s national platform connecting them. Licensed providers are required to connect and submit clinical data. We build and maintain the integration feeds — typically HL7 v2 and FHIR-based — that keep providers compliant and their data flowing.</div>
+        </div>
+      </div>
+      <div class="faq-item"><button class="faq-q" type="button">What is NPHIES and why does it matter for Saudi healthcare organisations?<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <div class="faq-a-inner">NPHIES is Saudi Arabia’s national platform for health insurance exchange services, standardising how providers and insurers exchange eligibility, claims, and clinical information. It reshapes payer and provider data operations: organisations need standards-compliant data pipelines, integration engineering, and analytics that work with NPHIES data structures. We help both providers and insurers build NPHIES-ready platforms.</div>
+        </div>
+      </div>
+      <div class="faq-item"><button class="faq-q" type="button">Can you build AI systems that handle Arabic clinical text?<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Yes. Arabic clinical NLP is a core capability — including mixed Arabic-English records, dialect variation in patient communication, and right-to-left interface design. Where data residency prevents using global AI APIs, we deploy fine-tuned open-weight models inside UAE or Saudi infrastructure, so language capability doesn’t come at the cost of compliance.</div>
+        </div>
+      </div>
+      <div class="faq-item"><button class="faq-q" type="button">Do you work with healthcare startups or only large providers?<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Both. Health-tech startups engage us for compliant-by-design architecture, product leadership, and engineering capacity — avoiding the compliance debt that kills funding rounds and procurement deals later. Hospital groups, insurers, and government entities engage us for enterprise data platforms, integration, and transformation programs.</div>
+        </div>
+      </div>
+      <div class="faq-item"><button class="faq-q" type="button">How do you handle clinical safety in AI and analytics work?<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Through explainability, human oversight, and monitoring as non-negotiables: models ship with interpretability documentation, clinical stakeholders validate logic before deployment, decision-support outputs are advisory to clinicians rather than autonomous, and production monitoring detects drift before it becomes a safety issue. We treat a degrading healthcare model as an incident, not a backlog item.</div>
+        </div>
+      </div>
     </div>
   </div></section>
   <section class="section cta-band"><div class="container" style="text-align:center;max-width:880px">

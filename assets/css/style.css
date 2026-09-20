@@ -1003,6 +1003,15 @@ button {
   gap: 26px;
 }
 
+/* Two-column grid used by the service coverage sections; collapses to one column on mobile */
+.coverage-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.coverage-grid .coverage-wide {
+  grid-column: 1 / -1;
+}
+
 .value-card {
   background: var(--lav-2);
   border: 1px solid var(--border);
@@ -3159,6 +3168,10 @@ button {
   align-items: stretch;
 }
 
+.engagement-models .em-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .engagement-models .em-col {
   height: 100%;
 }
@@ -3271,7 +3284,8 @@ button {
 }
 
 @media (max-width: 992px) {
-  .engagement-models .em-grid {
+  .engagement-models .em-grid,
+  .engagement-models .em-grid-2 {
     grid-template-columns: 1fr;
     max-width: 640px;
     margin-left: auto;
@@ -3869,6 +3883,32 @@ button {
   .hero-points li {
     font-size: 12.5px;
     padding: 8px 14px;
+  }
+}
+
+/* ---------- Responsive: service sub-page polish ---------- */
+@media (max-width: 768px) {
+  .value-card,
+  .challenge-card {
+    padding: 28px 22px;
+  }
+
+  .engagement-models .em-card {
+    padding: 34px 24px 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .trust-item {
+    padding: 24px 18px;
+  }
+
+  .trust-item strong {
+    font-size: 1.3rem;
+  }
+
+  .detail-block h3 {
+    font-size: 1.1rem;
   }
 }
 
