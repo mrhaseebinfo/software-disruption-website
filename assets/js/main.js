@@ -68,6 +68,7 @@
     navToggle.classList.remove("open");
     navToggle.setAttribute("aria-expanded", "false");
     document.body.classList.remove("nav-open");
+    nav.querySelectorAll(".nav-item.has-dropdown.open").forEach(function (o) { o.classList.remove("open"); });
   }
   if (navToggle && nav) {
     navToggle.addEventListener("click", function () {
@@ -75,10 +76,14 @@
       navToggle.classList.toggle("open", isOpen);
       navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
       document.body.classList.toggle("nav-open", isOpen);
+      if (!isOpen) {
+        nav.querySelectorAll(".nav-item.has-dropdown.open").forEach(function (o) { o.classList.remove("open"); });
+      }
     });
     if (navClose) navClose.addEventListener("click", closeNav);
     nav.querySelectorAll("a").forEach(function (a) {
       a.addEventListener("click", function (e) {
+        if (a.parentElement.classList.contains("has-dropdown")) return;
         if (window.innerWidth <= 1024 && a.getAttribute("href") && a.getAttribute("href").charAt(0) !== "#") closeNav();
       });
     });
