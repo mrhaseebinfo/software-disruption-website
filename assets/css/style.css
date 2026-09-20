@@ -3092,6 +3092,27 @@ button {
   margin: 16px 0 10px;
 }
 
+.detail-block.team-detail {
+  grid-template-columns: 140px 1fr;
+  align-items: start;
+  gap: 32px;
+}
+
+.detail-block.team-detail img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.detail-block.team-detail>div {
+  min-width: 0;
+}
+
 .tick-list {
   display: grid;
   gap: 8px;
@@ -3284,6 +3305,7 @@ button {
 }
 
 @media (max-width: 992px) {
+
   .engagement-models .em-grid,
   .engagement-models .em-grid-2 {
     grid-template-columns: 1fr;
@@ -3850,6 +3872,18 @@ button {
     padding: 26px 22px;
   }
 
+  .detail-block.team-detail {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 22px 20px;
+  }
+
+  .detail-block.team-detail img {
+    border-radius: 12px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
   .detail-icon {
     width: 54px;
     height: 54px;
@@ -3888,6 +3922,7 @@ button {
 
 /* ---------- Responsive: service sub-page polish ---------- */
 @media (max-width: 768px) {
+
   .value-card,
   .challenge-card {
     padding: 28px 22px;
