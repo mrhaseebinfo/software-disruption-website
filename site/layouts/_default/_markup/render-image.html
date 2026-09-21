@@ -1,0 +1,21 @@
+{{- $u := strings.TrimPrefix "/" .Destination -}}
+{{- $alt := .Text -}}
+{{- $isHero := false -}}
+{{- with $.Page.Params.featured_image -}}
+  {{- if eq (strings.TrimPrefix "/" .) $u }}{{ $isHero = true }}{{ end -}}
+{{- end -}}
+{{- $zig := "" -}}
+{{- if not $isHero -}}
+  {{- with $.Page.Store.Get "zigIdx" -}}{{ else }}{{ $.Page.Store.Set "zigIdx" 0 -}}{{ end -}}
+  {{- $n := $.Page.Store.Get "zigIdx" -}}
+  {{- if eq (mod $n 2) 0 }}{{ $zig = "media-row-img-left" }}{{ else }}{{ $zig = "media-row-img-right" }}{{ end -}}
+  {{- $.Page.Store.Set "zigIdx" (add $n 1) -}}
+{{- end -}}
+<figure class="article-media-row{{ with $zig }} {{ . }}{{ end }}">
+  <div class="amr-media">
+    <img src="{{ .Destination }}" alt="{{ $alt }}" loading="lazy">
+  </div>
+  {{- with $alt }}
+  <figcaption>{{ . }}</figcaption>
+  {{- end }}
+</figure>

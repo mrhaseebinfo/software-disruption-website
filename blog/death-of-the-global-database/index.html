@@ -112,13 +112,10 @@
 
   <a class="whatsapp-float" href="https://wa.me/971557529787" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.25 8.21zm4.53-6.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
   <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button><div class="reading-progress"><div class="reading-progress-bar" id="readingProgressBar"></div></div>
-
-<section class="article-hero has-hero-img">
-  <div class="article-hero-bg" aria-hidden="true"><img src="../../assets/img/blog-global-db.jpg" alt="" loading="eager"></div>
-  <div class="article-hero-scrim" aria-hidden="true"></div>
+<section class="article-hero">
   <div class="container">
     <nav class="breadcrumb"><a href="../../index.html">Home</a><span class="sep">&#8250;</span><a
-        href="../../blog/index.html">Blog</a></nav>
+        href="../../blog/index.html">Blog</a><span class="sep">&#8250;</span><span class="bc-cur">Article</span></nav>
     <span class="article-tag">Digital Transformation</span>
     <h1>The Death of the Global Database: How to Re-Architect Your SaaS Platform for KSA PDPL</h1>
     <p class="article-excerpt">For fifteen years, SaaS ran on a single global database — Saudi Arabia&#39;s PDPL has ended that. What the law actually demands, the four architectures that replace the global database, and the parts of the migration that keep catching teams off guard.</p>
@@ -141,7 +138,6 @@
           <path d="M12 6v6l4 2" />
         </svg> 11 min read</span>
     </div>
-    <figure class="article-featured"><img src="../../assets/img/blog-global-db.jpg" alt="The Death of the Global Database: How to Re-Architect Your SaaS Platform for KSA PDPL" loading="eager"></figure>
   </div>
 </section>
 <div class="article-body">
@@ -149,13 +145,23 @@
 <p>Saudi Arabia has ended that arrangement. If your platform serves customers in the Kingdom, the single global database has slipped from sensible default to standing liability, and the pressure is arriving from more than one direction at once.</p>
 <p>We are Software Disruption, a Dubai-based AI and data engineering company with delivery teams in Riyadh and Jeddah and more than ten years of platform work across the KSA and Saudi Arabia. Re-architecting for Saudi data rules now comes up in almost every serious platform conversation we have in the Kingdom, so this post lays out what the law actually demands, the four architectures that replace the global database, and the parts of the migration that keep catching teams off guard.</p>
 <p>Once that tag exists, storage rules, access rules, retention windows, and transfer reviews can all apply specifically to that data. Without it, everything sits in one pool, and &ldquo;we treat everyone the same&rdquo; isn&rsquo;t an answer PDPL accepts.</p>
-<p><img src="../../assets/img/blog-global-db-1.jpg" alt="Cross-border personal data flows under KSA PDPL"></p>
+<p><figure class="article-media-row media-row-img-left">
+  <div class="amr-media">
+    <img src="../../assets/img/blog-global-db-1.jpg" alt="Cross-border personal data flows under KSA PDPL" loading="lazy">
+  </div>
+  <figcaption>Cross-border personal data flows under KSA PDPL</figcaption>
+</figure></p>
 <h2 id="pdpl-treats-every-cross-border-flow-as-an-exception-you-have-to-justify">PDPL treats every cross-border flow as an exception you have to justify</h2>
 <p>The Personal Data Protection Law entered into force on 14 September 2023 under Royal Decree M/19, and the one-year grace period closed on 14 September 2024. Enforcement is no longer theoretical. SDAIA&rsquo;s committees had issued forty-eight decisions confirming violations by mid January 2026, administrative fines run up to SAR 5 million per violation and double for repeat offences, and violations involving sensitive data can reach criminal territory with up to two years of imprisonment.</p>
 <p>The transfer rules are where the law meets your architecture. SDAIA issued an amended Regulation on Personal Data Transfer Outside the Kingdom on 1 September 2024, together with its own standard contractual clauses. The shape will feel familiar if you have lived through GDPR: a transfer can rest on an adequacy decision, or on an appropriate safeguard such as the Saudi SCCs, binding common rules, or a certification.</p>
 <p>Two details make this harder than the GDPR comparison suggests. First, SDAIA has not published an adequacy list, so as of mid-2026 there is no country you can transfer to on adequacy alone; every flow needs a safeguard. Second, relying on a safeguard triggers a transfer risk assessment, and the guideline SDAIA published in February 2025 spells out what that assessment must cover: the purpose of the transfer, its geographic scope, the safeguard itself, the recipient&rsquo;s ability to protect the data, and evidence that you are moving the minimum data necessary.</p>
 <p>Read that last requirement as an engineer rather than a lawyer. Minimisation across borders is an architectural property. A contract cannot supply it if your schema replicates everything everywhere by design. A platform whose primary Postgres, backups, logs and analytics warehouse all sit in eu-west-1 is making one large, continuous, maximal transfer, and every risk assessment you write has to defend that fact.</p>
-<p><img src="../../assets/img/blog-global-db-2.jpg" alt="Transfer risk assessment and minimisation under the Saudi SCCs"></p>
+<p><figure class="article-media-row media-row-img-right">
+  <div class="amr-media">
+    <img src="../../assets/img/blog-global-db-2.jpg" alt="Transfer risk assessment and minimisation under the Saudi SCCs" loading="lazy">
+  </div>
+  <figcaption>Transfer risk assessment and minimisation under the Saudi SCCs</figcaption>
+</figure></p>
 <h2 id="the-regulator-is-only-one-of-three-pressures-pushing-data-into-the-kingdom">The regulator is only one of three pressures pushing data into the Kingdom</h2>
 <p>PDPL sets the legal floor. In practice, two other forces localise data faster than SDAIA does.</p>
 <p><strong>The first is sector regulation</strong></p>
@@ -166,7 +172,12 @@
 <p><strong>Put the three together and the pattern becomes obvious</strong></p>
 <p>Even where a lawyer can construct a compliant cross-border flow, the commercial cost of defending it, deal after deal and audit after audit, eventually exceeds the engineering cost of moving the data. The arithmetic killed the global database well before any regulation formally banned it.</p>
 <h2 id="four-architectures-can-replace-it-at-very-different-prices">Four architectures can replace it, at very different prices</h2>
-<p><img src="../../assets/img/blog-global-db-3.jpg" alt="The four data residency architecture patterns"></p>
+<p><figure class="article-media-row media-row-img-left">
+  <div class="amr-media">
+    <img src="../../assets/img/blog-global-db-3.jpg" alt="The four data residency architecture patterns" loading="lazy">
+  </div>
+  <figcaption>The four data residency architecture patterns</figcaption>
+</figure></p>
 <p>When we run this exercise with clients, the options collapse into four patterns. Each one draws the line between &ldquo;data that stays in the Kingdom&rdquo; and &ldquo;everything else&rdquo; in a different place.</p>
 <table>
 	<thead>
@@ -209,7 +220,12 @@
 <p>Tenant-pinned cells suit platforms that are already shared. The tenant&rsquo;s region becomes a property set at signup, a router sends every request to the right cell, and residency turns into a routing table entry rather than a migration. Getting there from a shared monolithic database is real surgery though, so this pattern rewards teams that made the cell decision years ago for scaling reasons.</p>
 <p>Dedicated single-tenant deployments win the large regulated accounts and quietly punish your on-call rota. Version drift across customer-owned environments is the tax. Automated upgrade pipelines are the only known painkiller.</p>
 <h2 id="the-migration-breaks-in-places-that-never-appear-on-the-architecture-diagram">The migration breaks in places that never appear on the architecture diagram</h2>
-<p><img src="../../assets/img/blog-global-db-4.jpg" alt="Backups, observability and the long tail of a residency migration"></p>
+<p><figure class="article-media-row media-row-img-right">
+  <div class="amr-media">
+    <img src="../../assets/img/blog-global-db-4.jpg" alt="Backups, observability and the long tail of a residency migration" loading="lazy">
+  </div>
+  <figcaption>Backups, observability and the long tail of a residency migration</figcaption>
+</figure></p>
 <p>Moving the primary database is the visible half of the project. In our experience the schedule slips on five quieter things.</p>
 <ul>
 <li><strong>Backups and disaster recovery come first:</strong> Point-in-time recovery snapshots and cross-region replicas copy personal data out of the Kingdom automatically, because that is exactly what you configured them to do in 2019. Your DR pair has to live in-country or the whole exercise unravels, which is why the availability zone count on the local cloud regions was the first thing serious teams checked.</li>
@@ -223,7 +239,12 @@
 <p>Finally, analytics and AI. A single global warehouse feeding company-wide dashboards conflicts directly with residency. The workable pattern is regional processing with only aggregated or properly anonymised rollups flowing upstream, and the distinction carries weight because SDAIA has published guidance on exactly this point: pseudonymised data is still personal data, anonymized data falls out of scope, and the bar for &ldquo;anonymised&rdquo; sits higher than most teams assume.</p>
 <p>The same logic hits AI features. A prompt sent to a US-hosted model API transfers whatever personal data rides inside it, so either the model endpoint serves from inside the Kingdom, or a redaction layer strips identifiers before the call, or the feature waits. We now design data pipelines and AI features around this constraint from day one, and doing it up front costs a fraction of retrofitting it under a customer deadline.</p>
 <h2 id="what-you-can-actually-rent-inside-the-kingdom-in-2026">What you can actually rent inside the Kingdom in 2026</h2>
-<p><img src="../../assets/img/blog-global-db-5.jpg" alt="Cloud regions and managed services available in the Kingdom"></p>
+<p><figure class="article-media-row media-row-img-left">
+  <div class="amr-media">
+    <img src="../../assets/img/blog-global-db-5.jpg" alt="Cloud regions and managed services available in the Kingdom" loading="lazy">
+  </div>
+  <figcaption>Cloud regions and managed services available in the Kingdom</figcaption>
+</figure></p>
 <p>The infrastructure side of this story has improved considerably. Google Cloud has operated a Saudi region since late 2023, and Oracle, Huawei and Alibaba run local regions as well. AWS opened its Saudi region, me-central-2 in Riyadh, in early 2026 with three availability zones, backed by an investment commitment of more than five billion dollars announced back in 2024. Microsoft&rsquo;s dedicated Azure region for the Kingdom was still in the pipeline at the time of writing, though Azure workloads are common here through hybrid arrangements.</p>
 <p>One practitioner warning before you assume parity with your current region: new regions launch with a subset of managed services, and the gap lands exactly where it hurts. Check the service availability matrix for every managed database, queue and ML endpoint on your bill of materials before committing dates to anyone. In the KSA landing zones we scope, that matrix check is step one, because a single missing managed service can add a quarter to a migration.</p>
 <h2 id="start-from-the-data-map-and-let-it-set-the-order-of-work">Start from the data map and let it set the order of work</h2>
@@ -243,26 +264,32 @@
   <div class="article-share">
     <span class="article-share-label">Share this article</span>
     <div class="article-share-row">
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblog%2fdeath-of-the-global-database%2f"
+        aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"
+          aria-hidden="true"><path
+            d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.04v6.7zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.13 2.13 0 0 1 2.06 2.06 2.06 2.06 0 0 1-2.06 2.07zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z" /></svg><span>LinkedIn</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://api.whatsapp.com/send?text=The&#43;Death&#43;of&#43;the&#43;Global&#43;Database%3A&#43;How&#43;to&#43;Re-Architect&#43;Your&#43;SaaS&#43;Platform&#43;for&#43;KSA&#43;PDPL%20%2fblog%2fdeath-of-the-global-database%2f"
+        aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"
+          aria-hidden="true"><path
+            d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.87-9.9 9.87zm8.42-18.26A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.47-8.38z" /></svg><span>WhatsApp</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://twitter.com/intent/tweet?text=The&#43;Death&#43;of&#43;the&#43;Global&#43;Database%3A&#43;How&#43;to&#43;Re-Architect&#43;Your&#43;SaaS&#43;Platform&#43;for&#43;KSA&#43;PDPL&url=%2fblog%2fdeath-of-the-global-database%2f"
+        aria-label="Share on X (Twitter)"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"
+          aria-hidden="true"><path
+            d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 6-7zm-1.3 19.4h2L6.5 3.3h-2.2l13.3 17.3z" /></svg><span>X
+          (Twitter)</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://www.facebook.com/sharer/sharer.php?u=%2fblog%2fdeath-of-the-global-database%2f"
+        aria-label="Share on Facebook"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"
+          aria-hidden="true"><path
+            d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z" /></svg><span>Facebook</span></a>
       <a class="share-btn" id="copyLink" href="#" role="button"
         aria-label="Copy link to article"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect
             x="9" y="9" width="13" height="13" rx="2" /><path
             d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg><span>Copy link</span></a>
-      <a class="share-btn" target="_blank" rel="noopener"
-        href="https://twitter.com/intent/tweet?text=The&#43;Death&#43;of&#43;the&#43;Global&#43;Database%3A&#43;How&#43;to&#43;Re-Architect&#43;Your&#43;SaaS&#43;Platform&#43;for&#43;KSA&#43;PDPL&url=%2fblog%2fdeath-of-the-global-database%2f"
-        aria-label="Share on X"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
-          aria-hidden="true"><path
-            d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 6-7zm-1.3 19.4h2L6.5 3.3h-2.2l13.3 17.3z" /></svg><span>X</span></a>
-      <a class="share-btn" target="_blank" rel="noopener"
-        href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblog%2fdeath-of-the-global-database%2f"
-        aria-label="Share on LinkedIn"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
-          aria-hidden="true"><path
-            d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3A1.8 1.8 0 1 1 8.3 6.5a1.8 1.8 0 0 1-1.8 1.8zM19 19h-3v-4.8c0-1.2-.5-2-1.5-2s-1.7.9-1.7 2.1V19h-3v-9h3v1.2a3 3 0 0 1 2.7-1.5c2 0 3.5 1.3 3.5 4.1z" /></svg><span>LinkedIn</span></a>
-      <a class="share-btn" target="_blank" rel="noopener"
-        href="https://api.whatsapp.com/send?text=The&#43;Death&#43;of&#43;the&#43;Global&#43;Database%3A&#43;How&#43;to&#43;Re-Architect&#43;Your&#43;SaaS&#43;Platform&#43;for&#43;KSA&#43;PDPL%20%2fblog%2fdeath-of-the-global-database%2f"
-        aria-label="Share on WhatsApp"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
-          aria-hidden="true"><path
-            d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm4.53 12.98c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" /></svg><span>WhatsApp</span></a>
     </div>
   </div>
   <div class="article-tags-row">
