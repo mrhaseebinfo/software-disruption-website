@@ -13,6 +13,8 @@ An enterprise in Dubai buys 200 Copilot seats. Six months later, adoption is at 
 
 We spend our days building data platforms for enterprises across the GCC, and AI readiness is a data problem wearing an AI costume.
 
+![AI readiness assessment for GCC enterprises](/assets/img/blog-17-4.jpg)
+
 ## The readiness checklist that actually predicts success
 
 ### 1. One source of truth per domain
@@ -45,5 +47,7 @@ Lineage, retention rules, and a clear answer to "can this dataset be used for tr
 - **Fund the data platform first.** Every dirham spent on models before pipelines is a dirham spent twice.
 - **Pick two use cases, not ten.** Ship one production workflow in a quarter; it will teach you more than any strategy deck.
 - **Measure adoption, not demos.** A model nobody uses is shelfware with a GPU bill.
+
+![Enterprise AI readiness checklist for leadership teams](/assets/img/blog-17-5.jpg)
 
 The winners in this market will not be the companies with the most impressive pilot. They'll be the ones whose data was ready when the models got good.

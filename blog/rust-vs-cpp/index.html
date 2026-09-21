@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta id="sdBase" name="sd-base" content="../../">
+  <meta id="sdBase" name="sd-base" content="/">
   <title>Rust vs C&#43;&#43;: Performance, Memory Management and Safety | SoftwareDisruption Dubai</title>
   <meta name="description" content="Rust vs C&#43;&#43; — what changed after CISA&#39;s memory-safety deadline, honest performance analysis, and when each language wins.">
   
@@ -111,13 +111,11 @@
   </div>
 
   <a class="whatsapp-float" href="https://wa.me/971557529787" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.25 8.21zm4.53-6.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
-  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button><section class="article-hero has-hero-img">
-  <div class="article-hero-bg" aria-hidden="true"><img src="../../assets/img/blog-rust.jpg" alt="" loading="eager"></div>
-  <div class="article-hero-scrim" aria-hidden="true"></div>
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button><div class="reading-progress"><div class="reading-progress-bar" id="readingProgressBar"></div></div>
+<section class="article-hero">
   <div class="container">
     <nav class="breadcrumb"><a href="../../index.html">Home</a><span class="sep">&#8250;</span><a
-        href="../../blog/index.html">Blog</a></nav>
-    <span class="article-tag">Software Development</span>
+        href="../../blog/index.html">Blog</a><span class="sep">&#8250;</span><span class="bc-cur">Article</span></nav>
     <h1>Rust vs C&#43;&#43;: Performance, Memory Management and Safety</h1>
     <p class="article-excerpt">Rust vs C&#43;&#43; — what changed after CISA&#39;s memory-safety deadline, honest performance analysis, and when each language wins.</p>
     <div class="article-meta">
@@ -139,12 +137,17 @@
           <path d="M12 6v6l4 2" />
         </svg> 3 min read</span>
     </div>
-    <figure class="article-featured"><img src="../../assets/img/blog-rust.jpg" alt="Rust vs C&#43;&#43;: Performance, Memory Management and Safety" loading="eager"></figure>
   </div>
 </section>
 <div class="article-body">
   <p>A deadline passed on January 1 this year, and most teams never noticed. CISA and the FBI had named that date for manufacturers shipping memory-unsafe code into critical infrastructure to publish a memory safety roadmap.</p>
 <p>Nobody gets fined. It still changed the Rust vs C++ debate after more than ten years of benchmark threads. We&rsquo;ve watched this question move from conference slides into procurement checklists. Our team at Software Disruption builds data platforms and backend systems across the UAE and Saudi Arabia, so those checklists land on our desk.</p>
+<p><figure class="article-media-row media-row-img-left">
+  <div class="amr-media">
+    <img src="../../assets/img/blog-17-2.jpg" alt="Rust and C&#43;&#43; performance benchmark comparison" loading="lazy">
+  </div>
+  <figcaption>Rust and C++ performance benchmark comparison</figcaption>
+</figure></p>
 <h2 id="rust-vs-c-performance-is-there-a-real-winner">Rust vs C++ Performance: Is There a Real Winner?</h2>
 <p>On raw speed, the honest answer we give clients is a near tie. Both compile to native machine code, and Rust&rsquo;s main compiler sits on LLVM — the same backend Clang uses for C++ — so much of the optimizer is shared.</p>
 <h3 id="1-rusts-ownership-model-enables-some-unique-optimizations">1. Rust&rsquo;s ownership model enables some unique optimizations</h3>
@@ -152,6 +155,12 @@
 <h3 id="2-bounds-checks-cost-rust-a-little">2. Bounds checks cost Rust a little</h3>
 <p>The optimizer removes most of them, but a careless hot loop can pay a few percent. C++ pays nothing because it checks nothing — which is the whole safety story below.</p>
 <h3 id="3-library-maturity-still-favours-c">3. Library maturity still favours C++</h3>
+<p><figure class="article-media-row media-row-img-right">
+  <div class="amr-media">
+    <img src="../../assets/img/blog-17-3.jpg" alt="Memory safety and library maturity trade-offs between Rust and C&#43;&#43;" loading="lazy">
+  </div>
+  <figcaption>Memory safety and library maturity trade-offs between Rust and C++</figcaption>
+</figure></p>
 <p>Eigen, CUDA, and decades of tuned game engine code. Rust equivalents are younger. If your workload leans on those ecosystems, the performance question answers itself.</p>
 <blockquote>
 <p>The real performance difference is not in the benchmark — it&rsquo;s in how much engineering time it takes to reach safe, fast, maintainable production code in each language.</p>
@@ -169,76 +178,101 @@
 </ul>
 <p>Language choice is an architectural decision, not a fashion decision. Make it deliberately — with your workload, your team, and your ten-year horizon on the table.</p>
 
+  <div class="article-share">
+    <span class="article-share-label">Share this article</span>
+    <div class="article-share-row">
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblog%2frust-vs-cpp%2f"
+        aria-label="Share on LinkedIn"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"
+          aria-hidden="true"><path
+            d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.04v6.7zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.13 2.13 0 0 1 2.06 2.06 2.06 2.06 0 0 1-2.06 2.07zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z" /></svg><span>LinkedIn</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://api.whatsapp.com/send?text=Rust&#43;vs&#43;C%2B%2B%3A&#43;Performance%2C&#43;Memory&#43;Management&#43;and&#43;Safety%20%2fblog%2frust-vs-cpp%2f"
+        aria-label="Share on WhatsApp"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"
+          aria-hidden="true"><path
+            d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35zM12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.87-9.9 9.87zm8.42-18.26A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.16-3.47-8.38z" /></svg><span>WhatsApp</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://twitter.com/intent/tweet?text=Rust&#43;vs&#43;C%2B%2B%3A&#43;Performance%2C&#43;Memory&#43;Management&#43;and&#43;Safety&url=%2fblog%2frust-vs-cpp%2f"
+        aria-label="Share on X (Twitter)"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"
+          aria-hidden="true"><path
+            d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 6-7zm-1.3 19.4h2L6.5 3.3h-2.2l13.3 17.3z" /></svg><span>X
+          (Twitter)</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://www.facebook.com/sharer/sharer.php?u=%2fblog%2frust-vs-cpp%2f"
+        aria-label="Share on Facebook"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"
+          aria-hidden="true"><path
+            d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.1 24 12.07z" /></svg><span>Facebook</span></a>
+      <a class="share-btn" id="copyLink" href="#" role="button"
+        aria-label="Copy link to article"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect
+            x="9" y="9" width="13" height="13" rx="2" /><path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg><span>Copy link</span></a>
+    </div>
+  </div>
   <div class="article-tags-row">
     <span class="at-label">Tags:</span>
     <a class="tag-chip" href="../../blog/tags/software-development/">#Software Development</a>
     <a class="tag-chip" href="../../blog/tags/rust/">#Rust</a>
     <a class="tag-chip" href="../../blog/tags/cpp/">#CPP</a>
   </div>
-  <div class="article-author-box">
-    <span class="author-avatar" aria-hidden="true">[0 1 Waqas]</span>
-    <div>
-      <p class="author-name">Written by <strong>Waqas Azam</strong></p>
-      <p class="author-bio">Software Disruption – FZCO, Dubai. Building data platforms, AI systems, and compliance-grade
-        software across the GCC.</p>
-    </div>
-  </div>
 </div>
-
 <section class="section related-posts">
   <div class="container">
     <span class="eyebrow center">Keep Reading</span>
     <h2 class="section-title">Related Articles</h2>
     <div class="blog-grid"><article class="blog-card reveal">
-  <a class="blog-thumb" href="../../blog/odoo-implementation-guide/">
-    <img src="../../assets/img/Oddo-Partner-1-scaled.webp" alt="Odoo Implementation Guide: Phases, Costs and Pitfalls in the GCC" loading="lazy">
-    <span>Software Development</span>
+  <a class="blog-thumb" href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">
+    <img src="../../assets/img/blog-17.jpg" alt="Odoo Implementation and Customization in Saudi Arabia: What Has to Work Before ZATCA Accepts the Invoice" loading="lazy">
+    <span class="thumb-badge">Odoo</span>
   </a>
   <div class="blog-body">
-    <span class="blog-cat">Software Development</span>
-    <h3><a href="../../blog/odoo-implementation-guide/">Odoo Implementation Guide: Phases, Costs and Pitfalls in the GCC</a></h3>
     <p class="blog-meta">
       <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       <span>By <strong>Waqas Azam</strong></span>
-      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      <span>September 18, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 19, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>11 min</span>
     </p>
-    <p><p>Your opening paragraph here tetsdjsh jsdkjfds jshkjfds kjsdlkfdsf kjslbfls flkjs fljsbfsbfn jsi flnsbpiusf  lsdbpiuhkj afiusafkj sfliusbfs fkuhfn fhrijrefh …</p></p>
-    <a class="link-more" href="../../blog/odoo-implementation-guide/">Read More <span>&#8594;</span></a>
+    <h3><a href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">Odoo Implementation and Customization in Saudi Arabia: What Has to Work Before ZATCA Accepts the Invoice</a></h3>
+    <p class="blog-excerpt">A Saudi company can have Odoo installed, Accounting configured and invoices coming out correctly on screen, yet still have work left before its …</p>
+    <a class="link-more" href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">Read Article <span>&#8594;</span></a>
   </div>
 </article><article class="blog-card reveal">
   <a class="blog-thumb" href="../../blog/e-invoicing-penalties-saudi-arabia/">
     <img src="../../assets/img/blog-einvoicing.jpg" alt="E-Invoicing Penalties in Saudi Arabia: What ZATCA Non-Compliance Actually Costs You" loading="lazy">
-    <span>Software Development</span>
+    <span class="thumb-badge">Software Development</span>
   </a>
   <div class="blog-body">
-    <span class="blog-cat">Software Development</span>
-    <h3><a href="../../blog/e-invoicing-penalties-saudi-arabia/">E-Invoicing Penalties in Saudi Arabia: What ZATCA Non-Compliance Actually Costs You</a></h3>
     <p class="blog-meta">
       <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       <span>By <strong>Waqas Azam</strong></span>
-      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      <span>September 14, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 14, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>4 min</span>
     </p>
-    <p><p>A production certificate expires on a Thursday afternoon. Nobody notices, because the billing system carries on exactly as before. PDFs still print. QR codes …</p></p>
-    <a class="link-more" href="../../blog/e-invoicing-penalties-saudi-arabia/">Read More <span>&#8594;</span></a>
+    <h3><a href="../../blog/e-invoicing-penalties-saudi-arabia/">E-Invoicing Penalties in Saudi Arabia: What ZATCA Non-Compliance Actually Costs You</a></h3>
+    <p class="blog-excerpt">A production certificate expires on a Thursday afternoon. Nobody notices, because the billing system carries on exactly as before. PDFs still print. …</p>
+    <a class="link-more" href="../../blog/e-invoicing-penalties-saudi-arabia/">Read Article <span>&#8594;</span></a>
   </div>
 </article><article class="blog-card reveal">
   <a class="blog-thumb" href="../../blog/ai-readiness-gcc-enterprises/">
     <img src="../../assets/img/blog-ai-readiness.jpg" alt="AI Readiness for GCC Enterprises: Fix Your Data Before You Buy the Model" loading="lazy">
-    <span>Artificial Intelligence</span>
+    <span class="thumb-badge">Artificial Intelligence</span>
   </a>
   <div class="blog-body">
-    <span class="blog-cat">Artificial Intelligence</span>
-    <h3><a href="../../blog/ai-readiness-gcc-enterprises/">AI Readiness for GCC Enterprises: Fix Your Data Before You Buy the Model</a></h3>
     <p class="blog-meta">
       <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       <span>By <strong>Waqas Azam</strong></span>
-      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      <span>September 8, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 8, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>2 min</span>
     </p>
-    <p><p>An enterprise in Dubai buys 200 Copilot seats. Six months later, adoption is at 12% and the steering committee is asking why. The answer is almost never the …</p></p>
-    <a class="link-more" href="../../blog/ai-readiness-gcc-enterprises/">Read More <span>&#8594;</span></a>
+    <h3><a href="../../blog/ai-readiness-gcc-enterprises/">AI Readiness for GCC Enterprises: Fix Your Data Before You Buy the Model</a></h3>
+    <p class="blog-excerpt">An enterprise in Dubai buys 200 Copilot seats. Six months later, adoption is at 12% and the steering committee is asking why. The answer is almost …</p>
+    <a class="link-more" href="../../blog/ai-readiness-gcc-enterprises/">Read Article <span>&#8594;</span></a>
   </div>
 </article>
     </div>
@@ -253,7 +287,49 @@
     <div class="hero-cta-row" style="justify-content:center"><a class="btn btn-orange btn-lg"
         href="../../contact/index.html">Book free consultation</a></div>
   </div>
-</section><footer class="footer">
+</section>
+<script>
+  (function () {
+    var bar = document.getElementById("readingProgressBar");
+    if (bar) {
+      function tick() {
+        var h = document.documentElement;
+        var sc = h.scrollTop || document.body.scrollTop;
+        var m = h.scrollHeight - h.clientHeight;
+        bar.style.width = (m > 0 ? (sc / m) * 100 : 0) + "%";
+      }
+      window.addEventListener("scroll", tick, { passive: true });
+      window.addEventListener("resize", tick, { passive: true });
+      tick();
+    }
+    var copy = document.getElementById("copyLink");
+    if (copy) {
+      var original = copy.innerHTML;
+      copy.addEventListener("click", function (e) {
+        e.preventDefault();
+        var url = location.href.split("#")[0];
+        var done = function () {
+          copy.classList.add("copied");
+          copy.innerHTML = '<svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Copied!</span>';
+          setTimeout(function () {
+            copy.classList.remove("copied");
+            copy.innerHTML = original;
+          }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done).catch(function () { fallback(url); done(); });
+        } else { fallback(url); done(); }
+        function fallback(t) {
+          var ta = document.createElement("textarea");
+          ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); } catch (err) {}
+          document.body.removeChild(ta);
+        }
+      });
+    }
+  })();
+</script><footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col footer-about">

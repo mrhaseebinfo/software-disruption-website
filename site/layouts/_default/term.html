@@ -1,16 +1,17 @@
 {{- define "main" }}
-{{- $pre := strings.Repeat (sub (len (split .RelPermalink "/")) 2) "../" -}}
-<section class="page-hero">
+{{- $pre := partial "relpre.html" . }}
+<section class="blog-hero">
   <div class="container">
     <nav class="breadcrumb"><a href="{{ $pre }}index.html">Home</a><span class="sep">&#8250;</span><a
         href="{{ $pre }}blog/index.html">Blog</a><span class="sep">&#8250;</span><span class="bc-cur">{{ .Title
         }}</span></nav>
-    <h1>Tag: {{ .Title }}</h1>
+    <span class="eyebrow light">Topic</span>
+    <h1>#{{ .Title }}</h1>
     <p class="lead">{{ len .Pages }} article{{ if gt (len .Pages) 1 }}s{{ end }} tagged with &ldquo;{{ .Title }}&rdquo;.
     </p>
   </div>
 </section>
-<section class="section blogs" style="padding-top:40px">
+<section class="section blogs-section" style="padding-top:40px">
   <div class="container">
     <div class="blog-grid">
       {{- range .Paginator.Pages }}
@@ -40,11 +41,6 @@
       {{- end }}
     </nav>
     {{- end }}
-    <p class="all-tags-row">Browse all tags:
-      {{- range $name, $pages := site.Taxonomies.tags }}
-      <a class="tag-chip" href="{{ $pre }}blog/tags/{{ $name | urlize }}/">#{{ $name }}</a>
-      {{- end }}
-    </p>
   </div>
 </section>
 {{- end }}

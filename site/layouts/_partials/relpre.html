@@ -1,0 +1,20 @@
+{{- /* Relative root prefix derived from URL depth. Sections include /page/N/ in
+       their URL; paginated TERM pages (tags) do NOT, so the current page
+       number is appended manually when needed. */}}
+{{- $url := .RelPermalink -}}
+{{- if not .IsPage -}}
+  {{- with .Paginator -}}
+    {{- if gt .TotalPages 1 -}}
+      {{- $u := .URL -}}
+      {{- if strings.HasSuffix $u (printf "page/%d/" .PageNumber) -}}
+        {{- $url = $u -}}
+      {{- else if gt .PageNumber 1 -}}
+        {{- $url = printf "%spage/%d/" (strings.TrimSuffix "/" $u) .PageNumber -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $depth := sub (len (split $url "/")) 2 -}}
+{{- if gt $depth 0 -}}
+{{- $pre := strings.Repeat $depth "../" -}}
+{{- strings.Trim "/" $pre }}/{{- else -}}./{{- end -}}
