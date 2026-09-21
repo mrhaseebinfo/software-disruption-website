@@ -288,11 +288,11 @@ window.SEARCH_INDEX = [
   "d": "Real cost of hiring in-house vs augmented team"
  },
  {
-  "t": "Odoo Implementation Guide: Phases, Costs and Pitfalls in the GCC",
-  "u": "blog/odoo-implementation-guide/index.html",
+  "t": "Odoo Implementation and Customization in Saudi Arabia: What Has to Work Before ZATCA Accepts the Invoice",
+  "u": "blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/index.html",
   "k": "odoo implementation guide phases costs pitfalls gcc uae ksa zatca data migration erp",
   "c": "Blog",
-  "d": "A phased Odoo implementation guide for UAE and Saudi Arabia businesses — scope, data migration, ZATCA e-invoicing readiness."
+  "d": "A Saudi company can have Odoo installed, Accounting configured and invoices coming out correctly on screen, yet still have work left before its invoicing process is ready for ZATCA Phase 2."
  },
  {
   "t": "How to Re-Architect Your SaaS Platform for KSA PDPL",
@@ -307,5 +307,89 @@ window.SEARCH_INDEX = [
   "k": "rust cpp memory safety performance cisa programming languages",
   "c": "Blog",
   "d": "Performance, memory management and safety"
+ },
+ {
+  "t": "The 87% Problem's Why Most AI Investments Underdeliver",
+  "u": "blog/87-problem-ai-investments/index.html",
+  "k": "ai investments underdeliver data quality pwc saudi arabia digital transformation",
+  "c": "Blog",
+  "d": "87% of operations leaders say poor data quality has hurt their ability to get value from digital initiatives."
+ },
+ {
+  "t": "How AI-Driven Digital Transformation Services Are Reshaping KSA Businesses",
+  "u": "blog/ai-digital-transformation-ksa-businesses/index.html",
+  "k": "ai digital transformation ksa vision 2030 year of artificial intelligence",
+  "c": "Blog",
+  "d": "In March 2026, the Saudi cabinet declared the year the Year of Artificial Intelligence."
+ },
+ {
+  "t": "AI Lab Assistant: Redefining Research and Development in the UAE",
+  "u": "blog/ai-lab-assistant-uae-rd/index.html",
+  "k": "ai lab assistant uae research development data science",
+  "c": "Blog",
+  "d": "AI lab assistants redefine R&D workflows in UAE labs."
+ },
+ {
+  "t": "Custom Software Development in KSA: A Buyer's Guide",
+  "u": "blog/custom-software-development-ksa/index.html",
+  "k": "custom software development ksa buyer guide saudi arabia",
+  "c": "Blog",
+  "d": "A buyer's guide to custom software development in Saudi Arabia."
+ },
+ {
+  "t": "The Death of the Global Database: How to Re-Architect Your SaaS Platform for KSA PDPL",
+  "u": "blog/death-of-the-global-database/index.html",
+  "k": "global database saas ksa pdpl data residency architecture migration",
+  "c": "Blog",
+  "d": "For fifteen years SaaS ran on a single global database — Saudi Arabia's PDPL has ended that."
+ },
+ {
+  "t": "Gemma 4 vs Closed APIs: What UAE Teams Should Build On",
+  "u": "blog/gemma-4-vs-closed-apis-uae/index.html",
+  "k": "gemma 4 closed apis uae open models llm",
+  "c": "Blog",
+  "d": "What UAE teams should build on — open weights or closed APIs."
+ },
+ {
+  "t": "The Hidden Cost of DevOps and Cloud in KSA",
+  "u": "blog/hidden-cost-devops-cloud-ksa/index.html",
+  "k": "devops cloud ksa cost finops hidden cost",
+  "c": "Blog",
+  "d": "The hidden cost of DevOps and cloud in Saudi Arabia."
+ },
+ {
+  "t": "Odoo Partner Levels and the KPIs Behind Them",
+  "u": "blog/odoo-partner-levels-kpis/index.html",
+  "k": "odoo partner levels ready silver gold kpis certification",
+  "c": "Blog",
+  "d": "Ready. Silver. Gold. What the Odoo partner tiers actually require."
+ },
+ {
+  "t": "How the Odoo Partner Certification System Works",
+  "u": "blog/odoo-partner-certification-system/index.html",
+  "k": "odoo partner certification system nominative exams tiers ready silver gold",
+  "c": "Blog",
+  "d": "Odoo certification runs on two levels: individual consultants and firm partner status."
+ },
+ {
+  "t": "Resource Augmentation in UAE and KSA: A Practical Guide",
+  "u": "blog/resource-augmentation-uae-ksa-guide/index.html",
+  "k": "resource augmentation uae ksa guide staff scaling team",
+  "c": "Blog",
+  "d": "A practical guide to resource augmentation in the UAE and KSA."
+ },
+ {
+  "t": "Scaling Your SaaS: Handling the Jump from 1,000 to 1 Million Users",
+  "u": "blog/scaling-your-saas/index.html",
+  "k": "scaling saas users growth load performance",
+  "c": "Blog",
+  "d": "From 1,000 to 1 million users — a practical path across every stage."
+ },
+ {
+  "t": "Software Consulting Services Explained",
+  "u": "blog/software-consulting-services-explained/index.html",
+  "k": "software consulting services explained strategy architecture",
+  "c": "Blog",
+  "d": "What software consulting services actually cover."
  }
 ];

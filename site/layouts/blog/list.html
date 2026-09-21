@@ -1,7 +1,5 @@
 {{- define "main" }}
-{{- $url := .RelPermalink -}}
-{{- with .Paginator }}{{ if gt .TotalPages 1 }}{{ $url = .URL }}{{ end }}{{ end -}}
-{{- $pre := strings.Repeat (sub (len (split $url "/")) 2) "../" -}}
+{{- $pre := partial "relpre.html" . }}
 {{- $featured := "" -}}
 {{- if eq .Paginator.PageNumber 1 }}{{ $featured = index .Paginator.Pages 0 }}{{ end -}}
 {{- $total := len (where site.RegularPages "Type" "blog") -}}
@@ -65,14 +63,6 @@
         <span class="eyebrow">Latest</span>
         <h2 class="section-title">All Articles</h2>
       </div>
-      {{- if site.Taxonomies.tags }}
-      <div class="blogs-head-links">
-        <span>Browse by topic:</span>
-        {{- range $name, $pages := site.Taxonomies.tags }}
-        <a class="tag-chip" href="{{ $pre }}blog/tags/{{ $name | urlize }}/">#{{ $name }}</a>
-        {{- end }}
-      </div>
-      {{- end }}
     </div>
 
     <div class="blog-grid">

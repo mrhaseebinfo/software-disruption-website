@@ -1,11 +1,6 @@
 {{- /* Relative root prefix derived from URL depth: /blog/ -> ../ , /blog/<slug>/ -> ../../ ,
        /blog/page/2/ and /blog/tags/<tag>/ -> ../../../ . Robust for any page. */}}
-{{- $pre := "" -}}
-{{- $url := .RelPermalink -}}
-{{- if and (not .IsPage) (eq .Kind "section") }}{{ with .Paginator }}{{ if gt .TotalPages 1 }}{{ $url = .URL }}{{ end }}{{ end }}{{ end -}}
-{{- $depth := sub (len (split $url "/")) 2 -}}
-{{- if gt $depth 0 }}{{ $pre = strings.Repeat $depth "../" }}{{ else }}{{ $pre = "./" }}{{ end -}}
-{{- $pre = trim $pre "/" -}}{{- if $pre }}{{ $pre = printf "%s/" $pre }}{{ end -}}
+{{- $pre := partial "relpre.html" . -}}
 <!DOCTYPE html>
 <html lang="en">
 <head>

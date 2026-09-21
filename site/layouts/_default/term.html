@@ -1,5 +1,5 @@
 {{- define "main" }}
-{{- $pre := strings.Repeat (sub (len (split .RelPermalink "/")) 2) "../" -}}
+{{- $pre := partial "relpre.html" . }}
 <section class="blog-hero">
   <div class="container">
     <nav class="breadcrumb"><a href="{{ $pre }}index.html">Home</a><span class="sep">&#8250;</span><a
@@ -41,11 +41,6 @@
       {{- end }}
     </nav>
     {{- end }}
-    <p class="all-tags-row">Browse all tags:
-      {{- range $name, $pages := site.Taxonomies.tags }}
-      <a class="tag-chip" href="{{ $pre }}blog/tags/{{ $name | urlize }}/">#{{ $name }}</a>
-      {{- end }}
-    </p>
   </div>
 </section>
 {{- end }}

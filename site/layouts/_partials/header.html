@@ -1,8 +1,4 @@
-{{- $pre := "" -}}
-{{- $url := .RelPermalink -}}
-{{- if and (not .IsPage) (eq .Kind "section") }}{{ with .Paginator }}{{ if gt .TotalPages 1 }}{{ $url = .URL }}{{ end }}{{ end }}{{ end -}}
-{{- $depth := sub (len (split $url "/")) 2 -}}
-{{- if gt $depth 0 }}{{ $pre = strings.Repeat $depth "../" }}{{ else }}{{ $pre = "./" }}{{ end -}}
+{{- $pre := partial "relpre.html" . -}}
 <div class="preloader" id="preloader" aria-hidden="true">
     <div class="preloader-inner">
       <img src="{{ $pre }}assets/img/loggo-footer.png" alt="" width="100" height="100">

@@ -2,7 +2,7 @@
 title: "Scaling Your SaaS: Handling the Jump from 1,000 to 1 Million Users"
 description: "From 1,000 to 1 million users, most SaaS products break under the load unless the foundation, growth and operating phases are handled deliberately. A practical path across every stage."
 date: 2026-04-07
-author: "SEO Software Disruption"
+author: "Waqas Azam"
 slug: "scaling-your-saas"
 tags: ["Product Management", "SaaS"]
 featured_image: "/assets/img/blog-scaling-saas.jpg"

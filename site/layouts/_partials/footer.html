@@ -1,8 +1,4 @@
-{{- $pre := "" -}}
-{{- $url := .RelPermalink -}}
-{{- if and (not .IsPage) (eq .Kind "section") }}{{ with .Paginator }}{{ if gt .TotalPages 1 }}{{ $url = .URL }}{{ end }}{{ end }}{{ end -}}
-{{- $depth := sub (len (split $url "/")) 2 -}}
-{{- if gt $depth 0 }}{{ $pre = strings.Repeat $depth "../" }}{{ else }}{{ $pre = "./" }}{{ end -}}
+{{- $pre := partial "relpre.html" . -}}
 <footer class="footer">
     <div class="container">
       <div class="footer-grid">

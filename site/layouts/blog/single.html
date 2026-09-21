@@ -1,5 +1,5 @@
 {{- define "main" }}
-{{- $pre := strings.Repeat (sub (len (split .RelPermalink "/")) 2) "../" -}}
+{{- $pre := partial "relpre.html" . }}
 {{- $wpm := site.Params.readingSpeed | default 200 -}}
 
 {{- /* ---------- Related posts: same tags first, then latest ---------- */}}
@@ -107,8 +107,7 @@ otherwise the branded gradient fallback keeps the page clean. ---------- */}}
   </div>
   {{- end }}
   <div class="article-author-box">
-    <span class="author-avatar" aria-hidden="true">{{ with .Params.author }}{{ index (split . " ") 0 | slice 0 1 }}{{
-      end }}</span>
+    <span class="author-avatar" aria-hidden="true">{{ with .Params.author }}{{ index (split . " ") 0 }}{{ end }}</span>
     <div class="author-box-text">
       <p class="author-name">Written by <strong>{{ .Params.author | default "Software Disruption" }}</strong></p>
       <p class="author-bio">Software Disruption – FZCO, Dubai. Building data platforms, AI systems, and compliance-grade
