@@ -15,6 +15,8 @@ Then the year runs. GOSI starts filing, the levy invoices land through SADAD, iq
 
 We have this conversation in most of our KSA scoping calls. The offer letter number gets treated as the cost of the engineer. It isn't, and the gap is wide enough to change which staffing model actually makes sense for you.
 
+![IT staff augmentation costs in Saudi Arabia](/assets/img/blog-17-6.jpg)
+
 ## The offer letter misses at least five recurring employer lines
 
 Take a non-Saudi engineer on twenty thousand riyals a month. Say the Qiwa-registered contract splits as basic twelve thousand five hundred, housing five thousand, other allowances two thousand five hundred. Fairly standard shape for a tech role.
@@ -43,5 +45,7 @@ Six to ten weeks is realistic for a good technical hire in the current Riyadh ma
 We say this to clients too: if you need permanent, core-domain capability for years — your core product team, your platform leadership — build it in-house. Augmentation works best for capacity, specialisations you need temporarily (a cloud migration, an ML push), and speed. Most mature organisations do both: a stable core, plus an elastic outer ring.
 
 ## The honest math
+
+![In-house hiring versus staff augmentation cost comparison](/assets/img/blog-software-consulting-partner.jpg)
 
 Compare the fully loaded in-house cost — salary plus the five employer lines plus recruitment effort plus time-to-productivity — against an augmented senior engineer at a predictable monthly rate, deliverable in days. For most Saudi businesses at growth stage, the augmented line wins on both cost and speed until the role becomes truly permanent. When it does, we'll tell you that too — that's the conversation a technology partner, not a body shop, has.

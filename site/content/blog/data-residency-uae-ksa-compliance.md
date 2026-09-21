@@ -13,6 +13,8 @@ Your customer in Riyadh signs a four-digit contract and then their security team
 
 We build data platforms across the UAE and Saudi Arabia, and residency has moved from a footnote to the first architectural decision. Here's the practical map we work from.
 
+![Data residency compliance map for the UAE and KSA](/assets/img/blog-17-4.jpg)
+
 ## The regulators that actually matter
 
 - **KSA — SDAIA and PDPL:** personal data must stay in-Kingdom unless a transfer mechanism under SDR applies. Enforcement is real and enterprise buyers police it before legal does.
@@ -40,6 +42,8 @@ Use hyperscaler in-Kingdom regions (they exist now in Riyadh) and document every
 Process personal data locally — devices, gateways, in-country clusters — and centralise only aggregates. Increasingly the default for IoT and retail analytics.
 
 ## What breaks in practice
+
+![Common data residency failure points in GCC cloud architectures](/assets/img/blog-17-5.jpg)
 
 - **Backups and DR** silently replicate across regions. Map them.
 - **SaaS sub-processors** route through US or EU support tooling. Contract for it.

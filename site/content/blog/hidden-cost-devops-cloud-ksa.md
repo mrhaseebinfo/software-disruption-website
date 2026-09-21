@@ -15,6 +15,8 @@ We've watched this play out plenty of times at Software Disruption's clients in 
 
 Over enough of these engagements, we stopped treating "cloud cost" as one number. We started breaking it into six layers, because that's where the money actually hides. Five of the six rarely show up in a vendor's pricing calculator, and in the KSA market specifically, the biggest one is regulatory. Here's the full picture, and what the teams who get it right do differently.
 
+![Hidden cloud and DevOps costs in Saudi Arabia](/assets/img/blog-17-2.jpg)
+
 ## The savings story has fine print
 
 The cloud does cut waste. You're not buying servers that only get hammered during Hajj traffic or a Ramadan campaign and sit idle the rest of the year. You're not paying to keep a half-empty data center cool. Worth having, no argument.
@@ -85,6 +87,8 @@ A real DevOps stack is never one tool. It's a CI/CD platform, a registry, an obs
 And the more you build on a provider's proprietary services, the pricier it gets to ever leave. Re-architecting, retraining people, dragging your data out (and paying egress on the way) that's a genuine liability, and in KSA it has a sharper edge than usual: a regulated workload may *have* to move when the compliant in-Kingdom region opens. If you've buried yourself in one provider's proprietary stack, that forced move stops being a strategic choice and becomes an expensive scramble.
 
 ## The Software Disruption KSA cloud cost audit
+
+![KSA cloud cost audit checklist](/assets/img/blog-17-3.jpg)
 
 When we take over or review an environment, we work the six layers in order, because each one exposes the next. This is the short version of what we run and a checklist you can score yourself against today.
 

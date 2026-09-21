@@ -11,6 +11,8 @@ thumb_class: "ph-blog"
 
 Saudi Arabia is experiencing rapid digital transformation. This one is different. We're Software Disruption — a Dubai-based software and AI company that has been delivering production systems for KSA and GCC clients for over a decade. What follows is what we actually tell clients before they start building here. Some of it is inconvenient. All of it is true.
 
+![Custom software development market growth in Saudi Arabia](/assets/img/blog-17-6.jpg)
+
 ### What the Market Looks Like Right Now
 
 The KSA custom software development market was worth $779 million in 2024. It's projected to hit $2.4 billion by 2030 — a 20.4% compound annual growth rate. Those numbers come from Grand View Research, and they track with what we see on the ground: a pipeline of enterprise and government projects that didn't exist five years ago, clients who've gotten sharper about what they're buying, and a lot of international teams arriving underprepared. *(Source: Grand View Research)*
@@ -117,6 +119,8 @@ The KSA market doesn't reward cheap builds. Clients here have seen enough qualit
 Decide on Free Zone vs. Mainland based on who your actual clients are. Map your compliance requirements — by sector, by regulator — before specs are written. Design for bilingual and RTL from the first wireframe, not after. Get IP assignment into every contract before any code or design is shared. Budget for quality. Mid-project rescues cost more than building it right.
 
 ### A Final Word
+
+![Custom software delivery for KSA enterprises](/assets/img/blog-software-consulting-journey.jpg)
 
 The KSA is a serious market for serious software. The infrastructure is real, the clients are there, and the regulatory environment — while demanding — is predictable once you understand it. Vision 2030 has restructured what buyers care about and what they're willing to pay for. The market isn't becoming more forgiving of unprepared teams; it's becoming less.
 

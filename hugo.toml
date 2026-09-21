@@ -44,7 +44,7 @@ disableKinds = ["home", "RSS", "sitemap", "robotsTXT", "404"]
     target = "layouts"
 
 [pagination]
-  pagerSize = 6          # posts per page on /blog/
+  pagerSize = 6          # 6 grid cards per page on /blog/ (page 1 featured card also counts toward the window)
   path = "page"
 
 # Permalink patterns — Hugo 0.141+ array-of-tables syntax.

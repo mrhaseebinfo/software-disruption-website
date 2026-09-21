@@ -15,6 +15,8 @@ What stopped is clearance. Every standard invoice that should have gone to Fatoo
 
 That's the shape of most Fatoora problems we get called into. Not defiance, not a decision to ignore anything. A certificate, a firewall change, an ERP upgrade that quietly broke the signing step. The fine is rarely the expensive part of it.
 
+![ZATCA e-invoicing penalties in Saudi Arabia](/assets/img/blog-17-2.jpg)
+
 ## ZATCA dropped Article 45 fines from the amnesty on 30 June 2026
 
 On 29 June 2026 the Zakat, Tax and Customs Authority announced that the Minister of Finance had extended the Cancellation of Fines and Exemption of Financial Penalties Initiative for another six months, running to 31 December 2026. Most finance teams read the headline, saw the date, and moved on.
@@ -43,6 +45,8 @@ The direct fines under Article 45 scale with violation count — SAR 5,000–50,
 Even if the initiative gets extended past December, it will not reach back to cover fines on any return that fell due after 30 June 2026. That door is shut regardless of what happens next.
 
 ## What we'd do this week
+
+![ZATCA e-invoicing compliance checklist for finance teams](/assets/img/blog-17-3.jpg)
 
 - Check the expiry date on your production CSID certificate. Put a named owner and a 60-day renewal reminder on it.
 - Reconcile Fatoora's response queue against your invoice register for the last 90 days. Anything uncleared is not a tax invoice.

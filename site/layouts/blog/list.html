@@ -1,8 +1,13 @@
 {{- define "main" }}
 {{- $pre := partial "relpre.html" . }}
-{{- $featured := "" -}}
-{{- if eq .Paginator.PageNumber 1 }}{{ $featured = index .Paginator.Pages 0 }}{{ end -}}
-{{- $total := len (where site.RegularPages "Type" "blog") -}}
+{{- $all := where site.RegularPages "Type" "blog" -}}
+{{- /* Featured post = newest overall, rendered as the big card and pulled
+       OUT of the pager via .Paginate (after 1 ...). The pager then runs over
+       the remaining posts with pagerSize=6, so page 1 shows 1 featured card
+       + 6 grid cards, and every later page shows exactly 6 grid cards. */}}
+{{- $featured := index $all 0 -}}
+{{- $pages := .Paginate (after 1 $all) 6 -}}
+{{- $total := len $all -}}
 {{- $topics := len site.Taxonomies.tags -}}
 
 <section class="blog-hero">
@@ -25,7 +30,7 @@
   <div class="container">
 
     {{- /* ---------- Featured post card (first page only) ---------- */}}
-    {{- if $featured }}
+    {{- if and $featured (eq $pages.PageNumber 1) }}
     <article class="featured-card reveal">
       <a class="featured-thumb" href="{{ $featured.RelPermalink }}">
         {{- $fimg := "" -}}
@@ -66,32 +71,30 @@
     </div>
 
     <div class="blog-grid">
-      {{- range .Paginator.Pages }}
-      {{- if ne . $featured }}
+      {{- range $pages.Pages }}
       {{- partial "blog-card.html" . }}
-      {{- end }}
       {{- end }}
     </div>
 
     {{- /* ---- Pagination ---- */}}
-    {{- if gt .Paginator.TotalPages 1 }}
+    {{- if gt $pages.TotalPages 1 }}
     <nav class="pagination" aria-label="Blog pages">
-      {{- if .Paginator.HasPrev }}
-      <a class="pg-link" href="{{ .Paginator.Prev.URL }}"><span class="pg-arr">&larr;</span> Newer posts</a>
+      {{- if $pages.HasPrev }}
+      <a class="pg-link" href="{{ $pages.Prev.URL }}"><span class="pg-arr">&larr;</span> Newer posts</a>
       {{- else }}
       <span class="pg-link pg-disabled"><span class="pg-arr">&larr;</span> Newer posts</span>
       {{- end }}
       <ul class="pg-list">
-        {{- range .Paginator.Pagers }}
-        {{- if eq .PageNumber $.Paginator.PageNumber }}
+        {{- range $pages.Pagers }}
+        {{- if eq .PageNumber $pages.PageNumber }}
         <li><span class="pg-num pg-current" aria-current="page">{{ .PageNumber }}</span></li>
         {{- else }}
         <li><a class="pg-num" href="{{ .URL }}">{{ .PageNumber }}</a></li>
         {{- end }}
         {{- end }}
       </ul>
-      {{- if .Paginator.HasNext }}
-      <a class="pg-link" href="{{ .Paginator.Next.URL }}">Older posts <span class="pg-arr">&rarr;</span></a>
+      {{- if $pages.HasNext }}
+      <a class="pg-link" href="{{ $pages.Next.URL }}">Older posts <span class="pg-arr">&rarr;</span></a>
       {{- else }}
       <span class="pg-link pg-disabled">Older posts <span class="pg-arr">&rarr;</span></span>
       {{- end }}

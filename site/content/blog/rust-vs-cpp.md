@@ -13,6 +13,8 @@ A deadline passed on January 1 this year, and most teams never noticed. CISA and
 
 Nobody gets fined. It still changed the Rust vs C++ debate after more than ten years of benchmark threads. We've watched this question move from conference slides into procurement checklists. Our team at Software Disruption builds data platforms and backend systems across the UAE and Saudi Arabia, so those checklists land on our desk.
 
+![Rust and C++ performance benchmark comparison](/assets/img/blog-17-2.jpg)
+
 ## Rust vs C++ Performance: Is There a Real Winner?
 
 On raw speed, the honest answer we give clients is a near tie. Both compile to native machine code, and Rust's main compiler sits on LLVM — the same backend Clang uses for C++ — so much of the optimizer is shared.
@@ -26,6 +28,8 @@ Ownership guarantees that mutable references never alias, allowing optimizations
 The optimizer removes most of them, but a careless hot loop can pay a few percent. C++ pays nothing because it checks nothing — which is the whole safety story below.
 
 ### 3. Library maturity still favours C++
+
+![Memory safety and library maturity trade-offs between Rust and C++](/assets/img/blog-17-3.jpg)
 
 Eigen, CUDA, and decades of tuned game engine code. Rust equivalents are younger. If your workload leans on those ecosystems, the performance question answers itself.
 

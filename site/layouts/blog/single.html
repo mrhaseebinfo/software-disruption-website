@@ -35,9 +35,6 @@
   <div class="container">
     <nav class="breadcrumb"><a href="{{ $pre }}index.html">Home</a><span class="sep">&#8250;</span><a
         href="{{ $pre }}blog/index.html">Blog</a><span class="sep">&#8250;</span><span class="bc-cur">Article</span></nav>
-    {{- with index .Params.tags 0 }}
-    <span class="article-tag">{{ . }}</span>
-    {{- end }}
     <h1>{{ .Title }}</h1>
     <p class="article-excerpt">{{ with .Description }}{{ . }}{{ end }}</p>
     <div class="article-meta">
@@ -105,18 +102,6 @@
     {{- end }}
   </div>
   {{- end }}
-  <div class="article-author-box">
-    <span class="author-avatar" aria-hidden="true">{{ with .Params.author }}{{ index (split . " ") 0 }}{{ end }}</span>
-    <div class="author-box-text">
-      <p class="author-name">Written by <strong>{{ .Params.author | default "Software Disruption" }}</strong></p>
-      <p class="author-bio">Software Disruption – FZCO, Dubai. Building data platforms, AI systems, and compliance-grade
-        software across the GCC.</p>
-      <div class="author-box-links">
-        <a href="{{ $pre }}team/index.html">Meet the team</a>
-        <a href="{{ $pre }}contact/index.html">Get in touch</a>
-      </div>
-    </div>
-  </div>
 </div>
 
 {{- if $related }}

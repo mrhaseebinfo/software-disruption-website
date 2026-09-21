@@ -13,6 +13,8 @@ A privacy policy won't save your SaaS platform under KSA PDPL. Your architecture
 
 The Personal Data Protection Law (PDPL) came into full enforcement in September 2024, and SDR — the Saudi Data and AI Authority's data transfer regulations — tightened the screws on how personal data leaves the Kingdom. Most SaaS platforms discovered that their compliance story was a PDF, not a system.
 
+![Re-architecting SaaS platforms for KSA PDPL compliance](/assets/img/blog-17-4.jpg)
+
 ## Why a policy document is not compliance
 
 PDPL enforcement is architectural. Regulators and enterprise buyers now ask questions no privacy policy can answer on its own:
@@ -47,6 +49,8 @@ Encrypt personal data at rest and in transit, and know where your keys live. For
 Role-based access with least privilege, plus immutable audit logs. When an enterprise buyer's security team audits you, the trail is the evidence.
 
 ## What we tell SaaS teams
+
+![PDPL-ready SaaS architecture guidance for SaaS teams](/assets/img/blog-17-5.jpg)
 
 - **Treat PDPL as a product requirement,** not a legal annex. It changes your data model, your delete pipelines, and your roadmap.
 - **Start with the data map.** Every other control depends on knowing where personal data lives.
