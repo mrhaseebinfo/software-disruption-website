@@ -2,29 +2,94 @@
 {{- $url := .RelPermalink -}}
 {{- with .Paginator }}{{ if gt .TotalPages 1 }}{{ $url = .URL }}{{ end }}{{ end -}}
 {{- $pre := strings.Repeat (sub (len (split $url "/")) 2) "../" -}}
-<section class="page-hero">
+{{- $featured := "" -}}
+{{- if eq .Paginator.PageNumber 1 }}{{ $featured = index .Paginator.Pages 0 }}{{ end -}}
+{{- $total := len (where site.RegularPages "Type" "blog") -}}
+{{- $topics := len site.Taxonomies.tags -}}
+
+<section class="blog-hero">
   <div class="container">
     <nav class="breadcrumb"><a href="{{ $pre }}index.html">Home</a><span class="sep">&#8250;</span><span
         class="bc-cur">Blog</span></nav>
-    <h1>Insights & Resources</h1>
-    <p class="lead">Practical writing on software engineering, AI, data platforms, and the technology regulation shaping
-      the GCC — from engineers who ship.</p>
+    <span class="eyebrow light">Software Disruption Journal</span>
+    <h1>Insights &amp; Resources</h1>
+    <p class="lead">Practical writing on software engineering, AI, data platforms, Odoo, and the technology regulation
+      shaping the GCC — from a team that ships production systems.</p>
+    <div class="blog-hero-stats">
+      <div class="blog-hero-stat"><strong>{{ $total }}</strong><span>Articles published</span></div>
+      <div class="blog-hero-stat"><strong>{{ $topics }}</strong><span>Topics covered</span></div>
+      <div class="blog-hero-stat"><strong>GCC</strong><span>UAE &amp; KSA focus</span></div>
+    </div>
   </div>
 </section>
-<section class="section blogs" style="padding-top:40px">
+
+<section class="section blogs-section">
   <div class="container">
-    <div class="blog-grid">
-      {{- range .Paginator.Pages }}
-      {{- partial "blog-card.html" . }}
+
+    {{- /* ---------- Featured post card (first page only) ---------- */}}
+    {{- if $featured }}
+    <article class="featured-card reveal">
+      <a class="featured-thumb" href="{{ $featured.RelPermalink }}">
+        {{- $fimg := "" -}}
+        {{- with $featured.Params.featured_image }}{{ if fileExists (strings.TrimPrefix "/" .) }}{{ $fimg = . }}{{ end }}{{ end -}}
+        {{- if $fimg }}
+        <img src="{{ $fimg }}" alt="{{ $featured.Title }}" loading="lazy">
+        {{- else }}
+        <div class="ph-blog ph-fallback {{ with $featured.Params.thumb_class }}{{ . }}{{ end }}">
+          <span class="ph-fallback-kicker">Software Disruption</span>
+          <span class="ph-fallback-title">{{ $featured.Title | truncate 90 }}</span>
+        </div>
+        {{- end }}
+        <span class="featured-badge">Latest</span>
+      </a>
+      <div class="featured-body">
+        <span class="blog-cat">{{ with $featured.Params.primary_tag }}{{ . }}{{ else }}{{ with $featured.Params.tags }}{{ index . 0 }}{{ end }}{{ end }}</span>
+        <h2><a href="{{ $featured.RelPermalink }}">{{ $featured.Title }}</a></h2>
+        <p class="featured-excerpt">{{ $featured.Summary | plainify | truncate 240 }}</p>
+        <p class="blog-meta">
+          <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>By <strong>{{ $featured.Params.author | default "Software Disruption" }}</strong></span>
+          <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>{{ $featured.Date.Format "January 2, 2006" }}</span>
+          <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <span>{{ $featured.ReadingTime }} min read</span>
+        </p>
+        <a class="link-more" href="{{ $featured.RelPermalink }}">Read Article <span>&#8594;</span></a>
+      </div>
+    </article>
+    {{- end }}
+
+    {{- /* ---------- Section header ---------- */}}
+    <div class="blogs-head">
+      <div>
+        <span class="eyebrow">Latest</span>
+        <h2 class="section-title">All Articles</h2>
+      </div>
+      {{- if site.Taxonomies.tags }}
+      <div class="blogs-head-links">
+        <span>Browse by topic:</span>
+        {{- range $name, $pages := site.Taxonomies.tags }}
+        <a class="tag-chip" href="{{ $pre }}blog/tags/{{ $name | urlize }}/">#{{ $name }}</a>
+        {{- end }}
+      </div>
       {{- end }}
     </div>
+
+    <div class="blog-grid">
+      {{- range .Paginator.Pages }}
+      {{- if ne . $featured }}
+      {{- partial "blog-card.html" . }}
+      {{- end }}
+      {{- end }}
+    </div>
+
     {{- /* ---- Pagination ---- */}}
     {{- if gt .Paginator.TotalPages 1 }}
     <nav class="pagination" aria-label="Blog pages">
       {{- if .Paginator.HasPrev }}
-      <a class="pg-link" href="{{ .Paginator.Prev.URL }}">&larr; Newer</a>
+      <a class="pg-link" href="{{ .Paginator.Prev.URL }}"><span class="pg-arr">&larr;</span> Newer posts</a>
       {{- else }}
-      <span class="pg-link pg-disabled" aria-disabled="true">&larr; Newer</span>
+      <span class="pg-link pg-disabled"><span class="pg-arr">&larr;</span> Newer posts</span>
       {{- end }}
       <ul class="pg-list">
         {{- range .Paginator.Pagers }}
@@ -36,12 +101,23 @@
         {{- end }}
       </ul>
       {{- if .Paginator.HasNext }}
-      <a class="pg-link" href="{{ .Paginator.Next.URL }}">Older &rarr;</a>
+      <a class="pg-link" href="{{ .Paginator.Next.URL }}">Older posts <span class="pg-arr">&rarr;</span></a>
       {{- else }}
-      <span class="pg-link pg-disabled" aria-disabled="true">Older &rarr;</span>
+      <span class="pg-link pg-disabled">Older posts <span class="pg-arr">&rarr;</span></span>
       {{- end }}
     </nav>
     {{- end }}
+  </div>
+</section>
+
+<section class="section cta-band">
+  <div class="container" style="text-align:center;max-width:880px">
+    <span class="eyebrow light center">Let's Build Something Together</span>
+    <h2 class="section-title">Let's Build Something Together</h2>
+    <p class="lead" style="margin-bottom:34px">Whether you're a startup with a bold idea or an enterprise ready to modernize
+      — we'd love to hear about your project.</p>
+    <div class="hero-cta-row" style="justify-content:center"><a class="btn btn-orange btn-lg"
+        href="{{ $pre }}contact/index.html">Get a Free Consultation</a></div>
   </div>
 </section>
 {{- end }}

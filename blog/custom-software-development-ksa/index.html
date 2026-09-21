@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="sdBase" name="sd-base" content="../../">
+  <title>Custom Software Development in the KSA: What to Know Before You Build | SoftwareDisruption Dubai</title>
+  <meta name="description" content="What we actually tell clients before they start building in Saudi Arabia — market outlook, jurisdiction and PDPL decisions, RTL architecture, talent, IP protection, and honest cost ranges.">
+  
+  <meta property="og:image" content="/assets/img/blog-custom-dev-ksa.jpg">
+  
+  <meta property="og:title" content="Custom Software Development in the KSA: What to Know Before You Build">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../../assets/img/loggo.png">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>document.documentElement.className += " js-anim";</script>
+</head>
+<body><div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <img src="../../assets/img/loggo-footer.png" alt="" width="100" height="100">
+      <div class="preloader-bar"><span></span></div>
+      <p>Software<span>Disruption</span></p>
+    </div>
+  </div>
+<div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span class="tb-item"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> IFZA Business Park, Dubai, UAE</span>
+        <span class="tb-sep"></span>
+        <a class="tb-item" href="tel:+971557529787"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +971-557529787</a>
+      </div>
+      <div class="topbar-right">
+        <span class="tb-item"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sun–Thu: 9:00–18:00 GST</span>
+        <span class="tb-sep"></span>
+        <a class="tb-item tb-in" href="https://www.linkedin.com/company/software-disruption/" target="_blank" rel="noopener"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" stroke="none" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.45-.03-3.35-2.05-3.35-2.05 0-2.35 1.6-2.35 3.2V21H9z"/></svg> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a class="logo" href="../../index.html">
+        <img src="../../assets/img/loggo.png" alt="Software Disruption logo" width="60" height="60">
+      </a>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <div class="nav-head">
+          <img src="../../assets/img/loggo.png" alt="" width="34" height="34">
+          <span>Menu</span>
+          <button class="nav-close" id="navClose" aria-label="Close menu">&#10005;</button>
+        </div>
+        <ul class="nav-list">
+          <li><a href="../../index.html" class="nav-link">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="../../services/index.html" class="nav-link">Services <span class="caret"><svg class="ico" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></a>
+            <div class="dropdown mega">
+              <div class="mega-grid">
+                <a href="../../services/data-engineering/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg><span>Data Engineering</span></a>
+                <a href="../../services/data-science/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 14l3-3 3 3 4-5"/><path d="M3 9h18"/></svg><span>Data Science</span></a>
+                <a href="../../services/ai-machine-learning/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg><span>AI &amp; Machine Learning</span></a>
+                <a href="../../services/product-management/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h8M8 10h8M8 14h5"/></svg><span>Product Management</span></a>
+                <a href="../../services/software-consulting/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Software Consulting</span></a>
+                <a href="../../services/resource-augmentation/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Resource Augmentation</span></a>
+                <a href="../../services/devops-cloud/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg><span>DevOps &amp; Cloud</span></a>
+                <a href="../../services/digital-transformation/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg><span>Digital Transformation</span></a>
+                <a href="../../services/odoo-partner/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4a2 2 0 1 0-4 0v1H6a2 2 0 0 0-2 2v4h1a2 2 0 1 1 0 4H4v4a2 2 0 0 0 2 2h4v-1a2 2 0 1 1 4 0v1h4a2 2 0 0 0 2-2v-4h-1a2 2 0 1 1 0-4h1V7a2 2 0 0 0-2-2h-4z"/></svg><span>Odoo Partner</span></a>
+              </div>
+              <div class="mega-foot">
+                <p>Not sure what you need? Book a free consultation.</p>
+                <a class="link-more" href="../../contact/index.html">Talk to an expert <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="../../industries/index.html" class="nav-link">Industries <span class="caret"><svg class="ico" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></a>
+            <div class="dropdown">
+              <ul class="drop-list">
+                <li><a href="../../industries/index.html">All Industries</a></li>
+                <li><a href="../../industries/business-accounting/index.html">Business Accounting</a></li><li><a href="../../industries/disaster-relief/index.html">Disaster Relief</a></li><li><a href="../../industries/energy-utilities/index.html">Energy &amp; Utilities</a></li><li><a href="../../industries/government/index.html">Government &amp; Public Sector</a></li><li><a href="../../industries/healthcare/index.html">Healthcare</a></li><li><a href="../../industries/higher-education/index.html">Higher Education</a></li><li><a href="../../industries/hotel-management/index.html">Hotel Management</a></li><li><a href="../../industries/logistics/index.html">Logistics &amp; Supply Chain</a></li><li><a href="../../industries/livestock/index.html">Livestock &amp; Animal Health</a></li><li><a href="../../industries/manufacturing/index.html">Manufacturing</a></li><li><a href="../../industries/real-estate/index.html">Real Estate &amp; Construction</a></li><li><a href="../../industries/retail-ecommerce/index.html">Retail &amp; E-Commerce</a></li><li><a href="../../industries/telecom-media/index.html">Telecom &amp; Media</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../../about/index.html" class="nav-link">About Us</a></li>
+          <li><a href="../../testimonials/index.html" class="nav-link">Testimonials</a></li>
+          <li><a href="../../why-us/index.html" class="nav-link">Why Us</a></li>
+        </ul>
+        <a class="btn btn-primary nav-cta" href="../../contact/index.html">Contact Us</a>
+      </nav>
+      <div class="header-actions">
+        <button class="search-btn" id="searchBtn" aria-label="Search">
+          <svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <a class="btn btn-primary header-cta" href="../../contact/index.html">Contact Us</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  
+  <div class="search-overlay" id="searchOverlay" aria-hidden="true">
+    <div class="search-box" role="dialog" aria-modal="true" aria-label="Search the site">
+      <div class="search-input-row">
+        <svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search services, industries, pages..." autocomplete="off">
+        <button class="search-close" id="searchClose" aria-label="Close search">&#10005;</button>
+      </div>
+      <div class="search-hint" id="searchHint">Try "AI", "data engineering", "healthcare", "Odoo", "cloud"...</div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <a class="whatsapp-float" href="https://wa.me/971557529787" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.25 8.21zm4.53-6.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button><div class="reading-progress"><div class="reading-progress-bar" id="readingProgressBar"></div></div>
+
+<section class="article-hero has-hero-img">
+  <div class="article-hero-bg" aria-hidden="true"><img src="../../assets/img/blog-custom-dev-ksa.jpg" alt="" loading="eager"></div>
+  <div class="article-hero-scrim" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="breadcrumb"><a href="../../index.html">Home</a><span class="sep">&#8250;</span><a
+        href="../../blog/index.html">Blog</a></nav>
+    <span class="article-tag">Software Development</span>
+    <h1>Custom Software Development in the KSA: What to Know Before You Build</h1>
+    <p class="article-excerpt">What we actually tell clients before they start building in Saudi Arabia — market outlook, jurisdiction and PDPL decisions, RTL architecture, talent, IP protection, and honest cost ranges.</p>
+    <div class="article-meta">
+      <span class="meta-chip"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg> by <strong>Waqas Azam</strong></span>
+      <span class="meta-chip"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg> June 9, 2026</span>
+      <span class="meta-chip"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 6v6l4 2" />
+        </svg> 11 min read</span>
+    </div>
+    <figure class="article-featured"><img src="../../assets/img/blog-custom-dev-ksa.jpg" alt="Custom Software Development in the KSA: What to Know Before You Build" loading="eager"></figure>
+  </div>
+</section>
+<div class="article-body">
+  <p>Saudi Arabia is experiencing rapid digital transformation. This one is different. We&rsquo;re Software Disruption — a Dubai-based software and AI company that has been delivering production systems for KSA and GCC clients for over a decade. What follows is what we actually tell clients before they start building here. Some of it is inconvenient. All of it is true.</p>
+<h3 id="what-the-market-looks-like-right-now">What the Market Looks Like Right Now</h3>
+<p>The KSA custom software development market was worth $779 million in 2024. It&rsquo;s projected to hit $2.4 billion by 2030 — a 20.4% compound annual growth rate. Those numbers come from Grand View Research, and they track with what we see on the ground: a pipeline of enterprise and government projects that didn&rsquo;t exist five years ago, clients who&rsquo;ve gotten sharper about what they&rsquo;re buying, and a lot of international teams arriving underprepared. <em>(Source: Grand View Research)</em></p>
+<p>Riyadh and the Eastern Province together account for 65% of national IT spending. The clients commissioning serious software here aren&rsquo;t experimenting — they&rsquo;re replacing legacy systems, digitising operations under government pressure, and in many cases trying to build something that didn&rsquo;t exist in the Kingdom before. The off-the-shelf tools they tried first didn&rsquo;t fit. That&rsquo;s why they&rsquo;re talking to development partners.</p>
+<p>Vision 2030 created the conditions for this. Government spending on emerging technologies grew by over 56% in 2024 alone. AI companies operating in the Kingdom pulled in $9.1 billion in funding that year. In May 2025, the Public Investment Fund launched HUMAIN — a government-owned AI company tasked with building Arabic LLMs, sovereign data infrastructure, and next-generation cloud capacity across the Kingdom. This isn&rsquo;t a pilot. It&rsquo;s a structural shift in how the Saudi economy is being built. <em>(Source: Arab News)</em></p>
+<p>The downstream effect: private sector clients in banking, healthcare, logistics, and retail are commissioning purpose-built software because generic tools can&rsquo;t keep up with how fast their regulatory environment and operational requirements are changing.</p>
+<h4 id="the-jurisdiction-question-is-a-business-decision-not-a-paperwork-task">The Jurisdiction Question Is a Business Decision, Not a Paperwork Task</h4>
+<p>We&rsquo;ve had clients come to us after choosing the wrong structure and spending months trying to fix it. It&rsquo;s an avoidable problem.</p>
+<p>Free Zones — Riyadh Internet City, Riyadh Silicon Oasis, Saudi Media City — work well for product companies and SaaS businesses. Full foreign ownership, tax incentives, a cluster of tech companies in the same building, and visa processing that moves faster than mainland. If you&rsquo;re building a product that you sell to the market rather than building software under contract for Saudi enterprises, this is probably your structure.</p>
+<p>The limitation is real though. Restrictions on direct mainland business activity still exist depending on what you do. If your main clients are Saudi enterprises or government agencies, a free zone setup creates friction that doesn&rsquo;t go away.</p>
+<p>A mainland license through the relevant authority gives you unrestricted access: government tenders, large Saudi corporates, no ceiling on who you can serve or how. The 2021 reforms removed the local sponsor requirement for most business activities, which changed the calculus significantly for foreign investors.</p>
+<p>Our position: if government contracts or serving large KSA enterprises is core to your plan, go mainland from day one. If you&rsquo;re building a product or SaaS that you&rsquo;re selling into the market, free zone often makes more operational sense. What we&rsquo;d push back on is making this decision based on which option is faster to set up. The right answer depends on who your actual customers are — and getting <a href="../../services/software-consulting/index.html">software consulting</a> input before you commit to a structure costs a fraction of restructuring later.</p>
+<h4 id="data-protection-the-grace-period-is-gone">Data Protection: The Grace Period Is Gone</h4>
+<p>Saudi Arabia&rsquo;s Personal Data Protection Law — issued under Royal Decree M/19 in September 2021, updated in March 2023 — came into full force on 14 September 2023. The one-year grace period ended on 14 September 2024. There&rsquo;s nothing left to wait out. <em>(Source: PwC Middle East)</em></p>
+<p>SDAIA, the Saudi Data and Artificial Intelligence Authority, oversees enforcement. The law applies to every entity processing personal data in the Kingdom — whether you&rsquo;re incorporated there or not. If you&rsquo;re building software that handles personal data of Saudi residents, you&rsquo;re in scope regardless of where your servers are.</p>
+<p>Penalties run to SAR 5 million (roughly $1.3 million USD) per violation, doubling for repeat offences. Certain sensitive data disclosures carry criminal exposure. These have been enforced.</p>
+<p>The PDPL structure will look familiar if you&rsquo;ve dealt with GDPR — consent requirements, data subject rights, purpose limitation, breach notification. But sector rules go further than the baseline law:</p>
+<p>Healthcare software is governed by the relevant health authority in your operating region. What patient data can be stored, where it can live, and how long it can be retained is tightly specified and has been actively enforced.</p>
+<p>Fintech platforms sit under SAMA&rsquo;s Cybersecurity Framework — a mandatory set of controls covering cloud usage, incident response, penetration testing requirements, and third-party risk management. In 2025, SAMA moved beyond requiring policies on paper to demanding demonstrated operational readiness. That means your architecture needs to reflect compliance, not just your documentation. <em>(Source: Legal500 / ICLG)</em></p>
+<p>Government projects almost universally require full data residency. Your servers need to be physically in the Kingdom, not just contractually associated with a local entity. SAMA&rsquo;s Cloud Computing Regulatory Framework makes this explicit for financial institutions: highly sensitive data must remain within Saudi borders. <em>(Source: MomentumX)</em></p>
+<p>Where we&rsquo;ve seen teams get hurt most: treating compliance as a post-launch task. By the time you&rsquo;re trying to retrofit <a href="../../services/data-engineering/index.html">data engineering</a> pipelines to meet audit requirements, you&rsquo;ve already paid to build them once. Getting the foundations right from the start takes more time at the beginning and saves it everywhere else.</p>
+<h4 id="on-talent--the-honest-version">On Talent — The Honest Version</h4>
+<p>The senior developer market in Riyadh is undersupplied relative to demand. That&rsquo;s not going to change quickly. Most companies operating here run hybrid teams, and that&rsquo;s not a compromise — it&rsquo;s the market reality.</p>
+<p>Hiring locally brings real advantages. Senior developers in Riyadh command salaries that regularly exceed London equivalents in certain specialisations. The Golden Visa has helped retain international talent that previously cycled through. And the value of local hires isn&rsquo;t only technical — cultural context shapes how software gets designed here in ways that offshore teams don&rsquo;t naturally carry.</p>
+<p>Offshore and hybrid arrangements are standard. South Asia, Eastern Europe, and other parts of the Arab world are all common sources for KSA project delivery. The model works when it&rsquo;s managed with discipline. Three things that actually matter in practice:</p>
+<p>IP assignment needs to be in writing before any work starts, governed by KSA law. Not assumed, not covered by a general contractor agreement that was written for a different jurisdiction. KSA employment law does not automatically assign IP created by an employee to the employer — it depends entirely on what the contract says. We&rsquo;ve inherited projects where this wasn&rsquo;t done properly, and the conversations that follow are expensive.</p>
+<p>Offshore teams need explicit briefing on KSA compliance requirements. They won&rsquo;t arrive knowing PDPL, SAMA cybersecurity obligations, or healthcare data rules. Assuming they do is how compliance gaps get built into systems.</p>
+<p>Milestone-based payment keeps accountability real. Time-and-materials arrangements without deliverable anchors drift. The offshore model gets blamed for outcomes that are actually project management problems.</p>
+<p>For companies that need engineering capacity without the overhead of permanent hiring, <a href="../../services/resource-augmentation/index.html">resource augmentation</a> is how we help clients scale quickly — pre-vetted engineers, data scientists, and product specialists who integrate into your existing team and workflows. The difference between this and a staffing agency is that our people already know the GCC regulatory environment and have worked in it.</p>
+<h4 id="arabic-is-an-architecture-decision">Arabic Is an Architecture Decision</h4>
+<p>Most development teams find out how wrong they got this at the wrong moment — when the Arabic version of the product ships and users don&rsquo;t engage with it.</p>
+<p>Arabic is right-to-left. That&rsquo;s not a stylesheet tweak or a translation layer. RTL affects layout logic, navigation flow, icon placement, form design, and how users process information hierarchically on screen. Interfaces that weren&rsquo;t designed with RTL in mind from the first wireframe tend to feel broken when retrofitted — because structurally, they are. The visual logic is running in the wrong direction.</p>
+<p>In practice, consumer apps with real traction in the KSA are bilingual from the ground up — Arabic and English with instant switching that works cleanly in both directions. Not an English product with a translated version. For any government-facing application, Arabic support is a requirement, not a feature. Visual and design choices carry cultural weight that doesn&rsquo;t directly translate, and colour associations or imagery that reads as neutral in a Western context may land differently here.</p>
+<p>On payments: integrate regional gateways — Telr, Network International, Checkout.com — from the start. KSA VAT is 15% and needs to be handled correctly in every transactional interface.</p>
+<p>This is why we push clients to involve <a href="../../services/product-management/index.html">software product management</a> early — before wireframes, before specs. Localisation requirements defined during discovery don&rsquo;t become expensive rework in sprint eight.</p>
+<h4 id="ai-in-the-ksa-the-retrofit-window-has-closed">AI in the KSA: The Retrofit Window Has Closed</h4>
+<p>Saudi Arabia&rsquo;s AI story moved from planning to production in 2025. Microsoft put it plainly in its regional analysis: the Kingdom shifted decisively from ambition to execution. <em>(Source: Microsoft Source EMEA)</em></p>
+<p>The HUMAIN launch marked something beyond a single initiative. The Kingdom is building sovereign AI infrastructure — Arabic large language models, national data centres, cloud capacity that doesn&rsquo;t route through foreign jurisdictions. Companies that have been waiting to &ldquo;add AI later&rdquo; are now competing against organisations that already have it running in production systems.</p>
+<p>Across the region today: demand forecasting in logistics, fraud detection in fintech, predictive maintenance in manufacturing, personalisation in retail. These aren&rsquo;t pilot projects. They&rsquo;re live, they&rsquo;re generating business value, and the companies running them did not bolt AI onto an existing product — they built with it from the start.</p>
+<p>If your software roadmap doesn&rsquo;t account for where <a href="../../services/ai-machine-learning/index.html">AI and machine learning</a> fit into the core product, the cost of adding it later is higher than building it in now. That&rsquo;s not a sales pitch — it&rsquo;s a pattern we see consistently in projects that come to us after an initial build missed the mark.</p>
+<p><a href="../../services/data-science/index.html">Data science</a> has the same dynamic. KSA clients are expecting dashboards, analytics, and business intelligence built into what they commission. Positioning those as a follow-on engagement signals that you didn&rsquo;t understand what they needed.</p>
+<h4 id="ip-protection-do-this-before-you-share-anything">IP Protection: Do This Before You Share Anything</h4>
+<p>KSA law protects software under copyright automatically — no registration required for basic protection. But basic protection doesn&rsquo;t cover the situations you&rsquo;ll actually face when something goes wrong on a real project.</p>
+<p>Written IP assignment clauses need to be in every contract — every developer, every agency, every contractor — before work starts. KSA employment law doesn&rsquo;t automatically assign IP created by an employee to the employer. Whether you own what your team built depends on what the contract says. If it&rsquo;s silent on this, you may not.</p>
+<p>Trademark your product name through the KSA Ministry of Economy before you have meaningful traction. Not after. Once something is working, similar registrations will follow. Software patents in the KSA are narrow — abstract ideas don&rsquo;t qualify — but if your implementation is genuinely novel, a local IP lawyer&rsquo;s view before launch costs far less than an infringement dispute after.</p>
+<h3 id="what-it-costs">What It Costs</h3>
+<p>These are honest ranges based on KSA-based development. Offshore hybrid models can reduce costs meaningfully — but they add coordination overhead that needs to be budgeted honestly, not optimistically.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Project Type</th>
+					<th>Estimated Cost (USD)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>MVP / Proof of Concept</td>
+					<td>$15,000 – $50,000</td>
+			</tr>
+			<tr>
+					<td>Mid-complexity web or mobile app</td>
+					<td>$50,000 – $150,000</td>
+			</tr>
+			<tr>
+					<td>Enterprise platform</td>
+					<td>$150,000 – $500,000+</td>
+			</tr>
+			<tr>
+					<td>Government-grade system</td>
+					<td>$300,000 – $1M+</td>
+			</tr>
+	</tbody>
+</table>
+<p>The KSA market doesn&rsquo;t reward cheap builds. Clients here have seen enough quality products to know what corners being cut looks like. A budget that seemed efficient but produces something that needs rebuilding six months later was never actually efficient — it just moved the cost.</p>
+<h4 id="before-you-start-the-short-version">Before You Start: The Short Version</h4>
+<p>Decide on Free Zone vs. Mainland based on who your actual clients are. Map your compliance requirements — by sector, by regulator — before specs are written. Design for bilingual and RTL from the first wireframe, not after. Get IP assignment into every contract before any code or design is shared. Budget for quality. Mid-project rescues cost more than building it right.</p>
+<h3 id="a-final-word">A Final Word</h3>
+<p>The KSA is a serious market for serious software. The infrastructure is real, the clients are there, and the regulatory environment — while demanding — is predictable once you understand it. Vision 2030 has restructured what buyers care about and what they&rsquo;re willing to pay for. The market isn&rsquo;t becoming more forgiving of unprepared teams; it&rsquo;s becoming less.</p>
+<p><strong>Software Disruption — FZCO</strong> operates out of Dubai with over a decade of delivery experience across KSA and the broader GCC. If you&rsquo;re planning a build and want a team that already knows this landscape — the regulators, the RTL requirements, the data residency rules, and what it actually takes to ship something that holds up — <a href="../../contact/index.html">let&rsquo;s talk</a>.</p>
+
+  <div class="article-share">
+    <span class="article-share-label">Share this article</span>
+    <div class="article-share-row">
+      <a class="share-btn" id="copyLink" href="#" role="button"
+        aria-label="Copy link to article"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect
+            x="9" y="9" width="13" height="13" rx="2" /><path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg><span>Copy link</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://twitter.com/intent/tweet?text=Custom&#43;Software&#43;Development&#43;in&#43;the&#43;KSA%3A&#43;What&#43;to&#43;Know&#43;Before&#43;You&#43;Build&url=%2fblog%2fcustom-software-development-ksa%2f"
+        aria-label="Share on X"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
+          aria-hidden="true"><path
+            d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 6-7zm-1.3 19.4h2L6.5 3.3h-2.2l13.3 17.3z" /></svg><span>X</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblog%2fcustom-software-development-ksa%2f"
+        aria-label="Share on LinkedIn"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
+          aria-hidden="true"><path
+            d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3A1.8 1.8 0 1 1 8.3 6.5a1.8 1.8 0 0 1-1.8 1.8zM19 19h-3v-4.8c0-1.2-.5-2-1.5-2s-1.7.9-1.7 2.1V19h-3v-9h3v1.2a3 3 0 0 1 2.7-1.5c2 0 3.5 1.3 3.5 4.1z" /></svg><span>LinkedIn</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://api.whatsapp.com/send?text=Custom&#43;Software&#43;Development&#43;in&#43;the&#43;KSA%3A&#43;What&#43;to&#43;Know&#43;Before&#43;You&#43;Build%20%2fblog%2fcustom-software-development-ksa%2f"
+        aria-label="Share on WhatsApp"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
+          aria-hidden="true"><path
+            d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm4.53 12.98c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" /></svg><span>WhatsApp</span></a>
+    </div>
+  </div>
+  <div class="article-tags-row">
+    <span class="at-label">Tags:</span>
+    <a class="tag-chip" href="../../blog/tags/software-development/">#Software Development</a>
+    <a class="tag-chip" href="../../blog/tags/saudi-arabia/">#Saudi Arabia</a>
+  </div>
+  <div class="article-author-box">
+    <span class="author-avatar" aria-hidden="true">[0 1 Waqas]</span>
+    <div class="author-box-text">
+      <p class="author-name">Written by <strong>Waqas Azam</strong></p>
+      <p class="author-bio">Software Disruption – FZCO, Dubai. Building data platforms, AI systems, and compliance-grade
+        software across the GCC.</p>
+      <div class="author-box-links">
+        <a href="../../team/index.html">Meet the team</a>
+        <a href="../../contact/index.html">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="section related-posts">
+  <div class="container">
+    <span class="eyebrow center">Keep Reading</span>
+    <h2 class="section-title">Related Articles</h2>
+    <div class="blog-grid"><article class="blog-card reveal">
+  <a class="blog-thumb" href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">
+    <img src="../../assets/img/blog-17.jpg" alt="Odoo Implementation and Customization in Saudi Arabia: What Has to Work Before ZATCA Accepts the Invoice" loading="lazy">
+    <span class="thumb-badge">Odoo</span>
+  </a>
+  <div class="blog-body">
+    <p class="blog-meta">
+      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>By <strong>Waqas Azam</strong></span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 19, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>11 min</span>
+    </p>
+    <h3><a href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">Odoo Implementation and Customization in Saudi Arabia: What Has to Work Before ZATCA Accepts the Invoice</a></h3>
+    <p class="blog-excerpt">A Saudi company can have Odoo installed, Accounting configured and invoices coming out correctly on screen, yet still have work left before its …</p>
+    <a class="link-more" href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">Read Article <span>&#8594;</span></a>
+  </div>
+</article><article class="blog-card reveal">
+  <a class="blog-thumb" href="../../blog/e-invoicing-penalties-saudi-arabia/">
+    <img src="../../assets/img/blog-einvoicing.jpg" alt="E-Invoicing Penalties in Saudi Arabia: What ZATCA Non-Compliance Actually Costs You" loading="lazy">
+    <span class="thumb-badge">Software Development</span>
+  </a>
+  <div class="blog-body">
+    <p class="blog-meta">
+      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>By <strong>Waqas Azam</strong></span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 14, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>4 min</span>
+    </p>
+    <h3><a href="../../blog/e-invoicing-penalties-saudi-arabia/">E-Invoicing Penalties in Saudi Arabia: What ZATCA Non-Compliance Actually Costs You</a></h3>
+    <p class="blog-excerpt">A production certificate expires on a Thursday afternoon. Nobody notices, because the billing system carries on exactly as before. PDFs still print. …</p>
+    <a class="link-more" href="../../blog/e-invoicing-penalties-saudi-arabia/">Read Article <span>&#8594;</span></a>
+  </div>
+</article><article class="blog-card reveal">
+  <a class="blog-thumb" href="../../blog/ai-readiness-gcc-enterprises/">
+    <img src="../../assets/img/blog-ai-readiness.jpg" alt="AI Readiness for GCC Enterprises: Fix Your Data Before You Buy the Model" loading="lazy">
+    <span class="thumb-badge">Artificial Intelligence</span>
+  </a>
+  <div class="blog-body">
+    <p class="blog-meta">
+      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>By <strong>Waqas Azam</strong></span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 8, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>2 min</span>
+    </p>
+    <h3><a href="../../blog/ai-readiness-gcc-enterprises/">AI Readiness for GCC Enterprises: Fix Your Data Before You Buy the Model</a></h3>
+    <p class="blog-excerpt">An enterprise in Dubai buys 200 Copilot seats. Six months later, adoption is at 12% and the steering committee is asking why. The answer is almost …</p>
+    <a class="link-more" href="../../blog/ai-readiness-gcc-enterprises/">Read Article <span>&#8594;</span></a>
+  </div>
+</article>
+    </div>
+  </div>
+</section>
+<section class="section cta-band">
+  <div class="container" style="text-align:center;max-width:880px">
+    <span class="eyebrow light center">Ready to Disrupt Digitally</span>
+    <h2 class="section-title">Ready to Disrupt Digitally</h2>
+    <p class="lead" style="margin-bottom:34px">Schedule your free consultation and start building smarter, scalable
+      solutions.</p>
+    <div class="hero-cta-row" style="justify-content:center"><a class="btn btn-orange btn-lg"
+        href="../../contact/index.html">Book free consultation</a></div>
+  </div>
+</section>
+<script>
+  (function () {
+    var bar = document.getElementById("readingProgressBar");
+    if (bar) {
+      function tick() {
+        var h = document.documentElement;
+        var sc = h.scrollTop || document.body.scrollTop;
+        var m = h.scrollHeight - h.clientHeight;
+        bar.style.width = (m > 0 ? (sc / m) * 100 : 0) + "%";
+      }
+      window.addEventListener("scroll", tick, { passive: true });
+      window.addEventListener("resize", tick, { passive: true });
+      tick();
+    }
+    var copy = document.getElementById("copyLink");
+    if (copy) {
+      var original = copy.innerHTML;
+      copy.addEventListener("click", function (e) {
+        e.preventDefault();
+        var url = location.href.split("#")[0];
+        var done = function () {
+          copy.classList.add("copied");
+          copy.innerHTML = '<svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Copied!</span>';
+          setTimeout(function () {
+            copy.classList.remove("copied");
+            copy.innerHTML = original;
+          }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done).catch(function () { fallback(url); done(); });
+        } else { fallback(url); done(); }
+        function fallback(t) {
+          var ta = document.createElement("textarea");
+          ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); } catch (err) {}
+          document.body.removeChild(ta);
+        }
+      });
+    }
+  })();
+</script><footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <a class="logo footer-logo" href="../../index.html">
+            <img src="../../assets/img/loggo-footer.png" alt="Software Disruption logo" width="60" height="60">
+          </a>
+          <p>Software Disruption – FZCO is a Dubai-based AI and data engineering company helping enterprises build scalable, data-driven software solutions across the GCC.</p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/company/software-disruption/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.45-.03-3.35-2.05-3.35-2.05 0-2.35 1.6-2.35 3.2V21H9z"/></svg></a>
+            <a href="https://wa.me/971557529787" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm4.53 12.98c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../../about/index.html">About Us</a></li>
+            <li><a href="../../why-us/index.html">Why Us</a></li>
+            <li><a href="../../how-we-work/index.html">How We Work</a></li>
+            <li><a href="../../team/index.html">Our Team</a></li>
+            <li><a href="../../careers/index.html">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resource</h4>
+          <ul>
+            <li><a href="../../blog/index.html">Blog</a></li>
+            <li><a href="../../case-studies/index.html">Case Studies</a></li>
+            <li><a href="../../testimonials/index.html">Client Testimonials</a></li>
+            <li><a href="../../faq/index.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>What We Do</h4>
+          <ul>
+            <li><a href="../../services/ai-machine-learning/index.html">AI &amp; Machine Learning</a></li>
+            <li><a href="../../services/data-engineering/index.html">Data Engineering</a></li>
+            <li><a href="../../services/devops-cloud/index.html">DevOps / Cloud</a></li>
+            <li><a href="../../services/digital-transformation/index.html">Digital Transformation</a></li>
+            <li><a href="../../services/software-consulting/index.html">Software Consulting</a></li>
+            <li><a href="../../services/odoo-partner/index.html">Odoo Partner</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul class="footer-contact">
+            <li><strong>Phone</strong><a href="tel:+971557529787">+971-557529787</a></li>
+            <li><strong>Email</strong><a href="mailto:waqas@softwaredisruption.com">waqas@softwaredisruption.com</a></li>
+            <li><strong>Address</strong><span>IFZA Business Park, DDP, PREMISES NO: 35039-001 Dubai</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Software Disruption - FZCO. All Rights Reserved.</p>
+        <div class="footer-legal"><a href="../../privacy/index.html">Privacy Policy</a><a href="../../terms/index.html">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="sdBase" name="sd-base" content="../../">
+  <title>The Death of the Global Database: How to Re-Architect Your SaaS Platform for KSA PDPL | SoftwareDisruption Dubai</title>
+  <meta name="description" content="For fifteen years, SaaS ran on a single global database — Saudi Arabia&#39;s PDPL has ended that. What the law actually demands, the four architectures that replace the global database, and the parts of the migration that keep catching teams off guard.">
+  
+  <meta property="og:image" content="/assets/img/blog-global-db.jpg">
+  
+  <meta property="og:title" content="The Death of the Global Database: How to Re-Architect Your SaaS Platform for KSA PDPL">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../../assets/img/loggo.png">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <script>document.documentElement.className += " js-anim";</script>
+</head>
+<body><div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <img src="../../assets/img/loggo-footer.png" alt="" width="100" height="100">
+      <div class="preloader-bar"><span></span></div>
+      <p>Software<span>Disruption</span></p>
+    </div>
+  </div>
+<div class="topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-left">
+        <span class="tb-item"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> IFZA Business Park, Dubai, UAE</span>
+        <span class="tb-sep"></span>
+        <a class="tb-item" href="tel:+971557529787"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +971-557529787</a>
+      </div>
+      <div class="topbar-right">
+        <span class="tb-item"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Sun–Thu: 9:00–18:00 GST</span>
+        <span class="tb-sep"></span>
+        <a class="tb-item tb-in" href="https://www.linkedin.com/company/software-disruption/" target="_blank" rel="noopener"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path fill="currentColor" stroke="none" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.45-.03-3.35-2.05-3.35-2.05 0-2.35 1.6-2.35 3.2V21H9z"/></svg> LinkedIn</a>
+      </div>
+    </div>
+  </div>
+  <header class="header" id="header">
+    <div class="container header-inner">
+      <a class="logo" href="../../index.html">
+        <img src="../../assets/img/loggo.png" alt="Software Disruption logo" width="60" height="60">
+      </a>
+      <nav class="nav" id="nav" aria-label="Main navigation">
+        <div class="nav-head">
+          <img src="../../assets/img/loggo.png" alt="" width="34" height="34">
+          <span>Menu</span>
+          <button class="nav-close" id="navClose" aria-label="Close menu">&#10005;</button>
+        </div>
+        <ul class="nav-list">
+          <li><a href="../../index.html" class="nav-link">Home</a></li>
+          <li class="nav-item has-dropdown">
+            <a href="../../services/index.html" class="nav-link">Services <span class="caret"><svg class="ico" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></a>
+            <div class="dropdown mega">
+              <div class="mega-grid">
+                <a href="../../services/data-engineering/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg><span>Data Engineering</span></a>
+                <a href="../../services/data-science/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 14l3-3 3 3 4-5"/><path d="M3 9h18"/></svg><span>Data Science</span></a>
+                <a href="../../services/ai-machine-learning/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg><span>AI &amp; Machine Learning</span></a>
+                <a href="../../services/product-management/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h8M8 10h8M8 14h5"/></svg><span>Product Management</span></a>
+                <a href="../../services/software-consulting/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Software Consulting</span></a>
+                <a href="../../services/resource-augmentation/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Resource Augmentation</span></a>
+                <a href="../../services/devops-cloud/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg><span>DevOps &amp; Cloud</span></a>
+                <a href="../../services/digital-transformation/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg><span>Digital Transformation</span></a>
+                <a href="../../services/odoo-partner/index.html"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4a2 2 0 1 0-4 0v1H6a2 2 0 0 0-2 2v4h1a2 2 0 1 1 0 4H4v4a2 2 0 0 0 2 2h4v-1a2 2 0 1 1 4 0v1h4a2 2 0 0 0 2-2v-4h-1a2 2 0 1 1 0-4h1V7a2 2 0 0 0-2-2h-4z"/></svg><span>Odoo Partner</span></a>
+              </div>
+              <div class="mega-foot">
+                <p>Not sure what you need? Book a free consultation.</p>
+                <a class="link-more" href="../../contact/index.html">Talk to an expert <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item has-dropdown">
+            <a href="../../industries/index.html" class="nav-link">Industries <span class="caret"><svg class="ico" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></a>
+            <div class="dropdown">
+              <ul class="drop-list">
+                <li><a href="../../industries/index.html">All Industries</a></li>
+                <li><a href="../../industries/business-accounting/index.html">Business Accounting</a></li><li><a href="../../industries/disaster-relief/index.html">Disaster Relief</a></li><li><a href="../../industries/energy-utilities/index.html">Energy &amp; Utilities</a></li><li><a href="../../industries/government/index.html">Government &amp; Public Sector</a></li><li><a href="../../industries/healthcare/index.html">Healthcare</a></li><li><a href="../../industries/higher-education/index.html">Higher Education</a></li><li><a href="../../industries/hotel-management/index.html">Hotel Management</a></li><li><a href="../../industries/logistics/index.html">Logistics &amp; Supply Chain</a></li><li><a href="../../industries/livestock/index.html">Livestock &amp; Animal Health</a></li><li><a href="../../industries/manufacturing/index.html">Manufacturing</a></li><li><a href="../../industries/real-estate/index.html">Real Estate &amp; Construction</a></li><li><a href="../../industries/retail-ecommerce/index.html">Retail &amp; E-Commerce</a></li><li><a href="../../industries/telecom-media/index.html">Telecom &amp; Media</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../../about/index.html" class="nav-link">About Us</a></li>
+          <li><a href="../../testimonials/index.html" class="nav-link">Testimonials</a></li>
+          <li><a href="../../why-us/index.html" class="nav-link">Why Us</a></li>
+        </ul>
+        <a class="btn btn-primary nav-cta" href="../../contact/index.html">Contact Us</a>
+      </nav>
+      <div class="header-actions">
+        <button class="search-btn" id="searchBtn" aria-label="Search">
+          <svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <a class="btn btn-primary header-cta" href="../../contact/index.html">Contact Us</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  
+  <div class="search-overlay" id="searchOverlay" aria-hidden="true">
+    <div class="search-box" role="dialog" aria-modal="true" aria-label="Search the site">
+      <div class="search-input-row">
+        <svg class="ico" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search services, industries, pages..." autocomplete="off">
+        <button class="search-close" id="searchClose" aria-label="Close search">&#10005;</button>
+      </div>
+      <div class="search-hint" id="searchHint">Try "AI", "data engineering", "healthcare", "Odoo", "cloud"...</div>
+      <div class="search-results" id="searchResults"></div>
+    </div>
+  </div>
+
+  <a class="whatsapp-float" href="https://wa.me/971557529787" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.21-8.25 8.21zm4.53-6.15c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></button><div class="reading-progress"><div class="reading-progress-bar" id="readingProgressBar"></div></div>
+
+<section class="article-hero has-hero-img">
+  <div class="article-hero-bg" aria-hidden="true"><img src="../../assets/img/blog-global-db.jpg" alt="" loading="eager"></div>
+  <div class="article-hero-scrim" aria-hidden="true"></div>
+  <div class="container">
+    <nav class="breadcrumb"><a href="../../index.html">Home</a><span class="sep">&#8250;</span><a
+        href="../../blog/index.html">Blog</a></nav>
+    <span class="article-tag">Digital Transformation</span>
+    <h1>The Death of the Global Database: How to Re-Architect Your SaaS Platform for KSA PDPL</h1>
+    <p class="article-excerpt">For fifteen years, SaaS ran on a single global database — Saudi Arabia&#39;s PDPL has ended that. What the law actually demands, the four architectures that replace the global database, and the parts of the migration that keep catching teams off guard.</p>
+    <div class="article-meta">
+      <span class="meta-chip"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg> by <strong>Waqas Azam</strong></span>
+      <span class="meta-chip"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg> August 1, 2026</span>
+      <span class="meta-chip"><svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 6v6l4 2" />
+        </svg> 11 min read</span>
+    </div>
+    <figure class="article-featured"><img src="../../assets/img/blog-global-db.jpg" alt="The Death of the Global Database: How to Re-Architect Your SaaS Platform for KSA PDPL" loading="eager"></figure>
+  </div>
+</section>
+<div class="article-body">
+  <p>For roughly fifteen years, SaaS architecture had one answer to the question of where customer data lives: a single multi-tenant database in one cloud region, usually somewhere in Virginia or Frankfurt, serving every customer on the planet. It was cheap, it was simple, and for most of that period nobody&rsquo;s procurement team ever asked about it.</p>
+<p>Saudi Arabia has ended that arrangement. If your platform serves customers in the Kingdom, the single global database has slipped from sensible default to standing liability, and the pressure is arriving from more than one direction at once.</p>
+<p>We are Software Disruption, a Dubai-based AI and data engineering company with delivery teams in Riyadh and Jeddah and more than ten years of platform work across the KSA and Saudi Arabia. Re-architecting for Saudi data rules now comes up in almost every serious platform conversation we have in the Kingdom, so this post lays out what the law actually demands, the four architectures that replace the global database, and the parts of the migration that keep catching teams off guard.</p>
+<p>Once that tag exists, storage rules, access rules, retention windows, and transfer reviews can all apply specifically to that data. Without it, everything sits in one pool, and &ldquo;we treat everyone the same&rdquo; isn&rsquo;t an answer PDPL accepts.</p>
+<p><img src="../../assets/img/blog-global-db-1.jpg" alt="Cross-border personal data flows under KSA PDPL"></p>
+<h2 id="pdpl-treats-every-cross-border-flow-as-an-exception-you-have-to-justify">PDPL treats every cross-border flow as an exception you have to justify</h2>
+<p>The Personal Data Protection Law entered into force on 14 September 2023 under Royal Decree M/19, and the one-year grace period closed on 14 September 2024. Enforcement is no longer theoretical. SDAIA&rsquo;s committees had issued forty-eight decisions confirming violations by mid January 2026, administrative fines run up to SAR 5 million per violation and double for repeat offences, and violations involving sensitive data can reach criminal territory with up to two years of imprisonment.</p>
+<p>The transfer rules are where the law meets your architecture. SDAIA issued an amended Regulation on Personal Data Transfer Outside the Kingdom on 1 September 2024, together with its own standard contractual clauses. The shape will feel familiar if you have lived through GDPR: a transfer can rest on an adequacy decision, or on an appropriate safeguard such as the Saudi SCCs, binding common rules, or a certification.</p>
+<p>Two details make this harder than the GDPR comparison suggests. First, SDAIA has not published an adequacy list, so as of mid-2026 there is no country you can transfer to on adequacy alone; every flow needs a safeguard. Second, relying on a safeguard triggers a transfer risk assessment, and the guideline SDAIA published in February 2025 spells out what that assessment must cover: the purpose of the transfer, its geographic scope, the safeguard itself, the recipient&rsquo;s ability to protect the data, and evidence that you are moving the minimum data necessary.</p>
+<p>Read that last requirement as an engineer rather than a lawyer. Minimisation across borders is an architectural property. A contract cannot supply it if your schema replicates everything everywhere by design. A platform whose primary Postgres, backups, logs and analytics warehouse all sit in eu-west-1 is making one large, continuous, maximal transfer, and every risk assessment you write has to defend that fact.</p>
+<p><img src="../../assets/img/blog-global-db-2.jpg" alt="Transfer risk assessment and minimisation under the Saudi SCCs"></p>
+<h2 id="the-regulator-is-only-one-of-three-pressures-pushing-data-into-the-kingdom">The regulator is only one of three pressures pushing data into the Kingdom</h2>
+<p>PDPL sets the legal floor. In practice, two other forces localise data faster than SDAIA does.</p>
+<p><strong>The first is sector regulation</strong></p>
+<p>SDAIA has delegated PDPL supervision of financial institutions to SAMA, and SAMA-regulated clients bring their own hosting expectations into every vendor conversation; if your platform touches banking or insurance workflows, in-Kingdom hosting stops being a debate.</p>
+<p>Government and semi-government buyers add NCA cybersecurity controls and CST cloud classification requirements on top of that. None of these bodies waits for your subprocessor list to be tidy.</p>
+<p><strong>They ask where the database is</strong></p>
+<p>On the RFPs we see from Riyadh, data residency sits in the first block of the security annex, ahead of SSO and ahead of uptime commitments. A vendor answering &ldquo;Frankfurt, with SCCs&rdquo; rarely gets struck out on legal grounds. The buyer&rsquo;s compliance team simply scores them below the competitor who answered &ldquo;Riyadh&rdquo; and spared everyone a transfer assessment. We have watched a deal sit for a quarter on this single line item while everything else in the evaluation was already agreed.</p>
+<p><strong>Put the three together and the pattern becomes obvious</strong></p>
+<p>Even where a lawyer can construct a compliant cross-border flow, the commercial cost of defending it, deal after deal and audit after audit, eventually exceeds the engineering cost of moving the data. The arithmetic killed the global database well before any regulation formally banned it.</p>
+<h2 id="four-architectures-can-replace-it-at-very-different-prices">Four architectures can replace it, at very different prices</h2>
+<p><img src="../../assets/img/blog-global-db-3.jpg" alt="The four data residency architecture patterns"></p>
+<p>When we run this exercise with clients, the options collapse into four patterns. Each one draws the line between &ldquo;data that stays in the Kingdom&rdquo; and &ldquo;everything else&rdquo; in a different place.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Pattern</th>
+					<th>What lives in KSA</th>
+					<th>Where it fits</th>
+					<th>The cost you feel</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Full regional stack</td>
+					<td>Everything: app, database, storage, backups, logs</td>
+					<td>SAMA-adjacent deals, government work, sensitive data at scale</td>
+					<td>Running a second production estate, permanently</td>
+			</tr>
+			<tr>
+					<td>Regional data plane, global control plane</td>
+					<td>Personal data stores, object storage, backups; config and billing metadata stay global</td>
+					<td>Most B2B SaaS platforms</td>
+					<td>Untangling which &ldquo;metadata&rdquo; is actually personal data</td>
+			</tr>
+			<tr>
+					<td>Tenant-pinned cells</td>
+					<td>Each Saudi tenant&rsquo;s cell, pinned at signup</td>
+					<td>Platforms already sharded or cell-based</td>
+					<td>A routing layer that becomes core infrastructure</td>
+			</tr>
+			<tr>
+					<td>Dedicated single-tenant (BYOC)</td>
+					<td>A full stack inside the customer&rsquo;s own KSA cloud account</td>
+					<td>Anchor accounts and regulated enterprises</td>
+					<td>Operating a fleet of snowflake environments</td>
+			</tr>
+	</tbody>
+</table>
+<p>The full regional stack is the cleanest answer a compliance reviewer will ever read and the heaviest thing your platform team will ever run. It only stays sane if your infrastructure is genuinely code: one Terraform estate, one deployment pipeline, region as a parameter. If deploying your platform still involves a wiki page and a senior engineer&rsquo;s memory, fix that first.</p>
+<p>The split between a regional data plane and a global control plane is where most platforms land, and the fights are all definitional. Tenant configuration sounds harmless until you notice the admin email addresses inside it. Billing records name real people. Feature flags keyed on user IDs count as personal data under PDPL&rsquo;s broad definition. Our working rule in DevOps and cloud engagements is blunt: anything carrying an identifier travels with the data plane, and the control plane gets redesigned until that statement is true.</p>
+<p>Tenant-pinned cells suit platforms that are already shared. The tenant&rsquo;s region becomes a property set at signup, a router sends every request to the right cell, and residency turns into a routing table entry rather than a migration. Getting there from a shared monolithic database is real surgery though, so this pattern rewards teams that made the cell decision years ago for scaling reasons.</p>
+<p>Dedicated single-tenant deployments win the large regulated accounts and quietly punish your on-call rota. Version drift across customer-owned environments is the tax. Automated upgrade pipelines are the only known painkiller.</p>
+<h2 id="the-migration-breaks-in-places-that-never-appear-on-the-architecture-diagram">The migration breaks in places that never appear on the architecture diagram</h2>
+<p><img src="../../assets/img/blog-global-db-4.jpg" alt="Backups, observability and the long tail of a residency migration"></p>
+<p>Moving the primary database is the visible half of the project. In our experience the schedule slips on five quieter things.</p>
+<ul>
+<li><strong>Backups and disaster recovery come first:</strong> Point-in-time recovery snapshots and cross-region replicas copy personal data out of the Kingdom automatically, because that is exactly what you configured them to do in 2019. Your DR pair has to live in-country or the whole exercise unravels, which is why the availability zone count on the local cloud regions was the first thing serious teams checked.</li>
+<li><strong>Observability is the second:</strong> Logs and traces carry email addresses, national IDs, sometimes whole request payloads, and most platforms ship all of it to a log platform hosted in the US.</li>
+<li><strong>That pipeline is a transfer:</strong> The realistic options are scrubbing identifiers at the agent before anything leaves the box, keeping a regional log store for anything payload-shaped.</li>
+<li><strong>Self-hosting the stack in-region:</strong> Budget properly for this one; observability re-plumbing surprises people almost as reliably as observability bills do.</li>
+</ul>
+<p>Support access is the trap nobody sees coming, because it involves no servers at all. Article 29 of the PDPL covers transferring personal data or disclosing it to a party outside the Kingdom, and a support engineer in another country opening a production console session is a disclosure outside the Kingdom.</p>
+<p>Moving the database to Riyadh achieves little if the people who can query it sit anywhere. The fixes are organisational as much as technical: in-region coverage for data-touching support work, just-in-time access with approvals and session recording for everyone else, and a break-glass procedure you could show an auditor without wincing.</p>
+<p>Then there is the subprocessor list, which is where these projects go to die. Transactional email, product analytics, error tracking, the CRM enrichment tool someone in marketing connected in 2022. Each of them receives personal data, so each becomes a transfer needing a safeguard and a line in the risk assessment. Expect to cut several. The honest test per vendor: would we sign the Saudi SCCs with them and defend it, or is this tool simply not worth the paperwork?</p>
+<p>Finally, analytics and AI. A single global warehouse feeding company-wide dashboards conflicts directly with residency. The workable pattern is regional processing with only aggregated or properly anonymised rollups flowing upstream, and the distinction carries weight because SDAIA has published guidance on exactly this point: pseudonymised data is still personal data, anonymized data falls out of scope, and the bar for &ldquo;anonymised&rdquo; sits higher than most teams assume.</p>
+<p>The same logic hits AI features. A prompt sent to a US-hosted model API transfers whatever personal data rides inside it, so either the model endpoint serves from inside the Kingdom, or a redaction layer strips identifiers before the call, or the feature waits. We now design data pipelines and AI features around this constraint from day one, and doing it up front costs a fraction of retrofitting it under a customer deadline.</p>
+<h2 id="what-you-can-actually-rent-inside-the-kingdom-in-2026">What you can actually rent inside the Kingdom in 2026</h2>
+<p><img src="../../assets/img/blog-global-db-5.jpg" alt="Cloud regions and managed services available in the Kingdom"></p>
+<p>The infrastructure side of this story has improved considerably. Google Cloud has operated a Saudi region since late 2023, and Oracle, Huawei and Alibaba run local regions as well. AWS opened its Saudi region, me-central-2 in Riyadh, in early 2026 with three availability zones, backed by an investment commitment of more than five billion dollars announced back in 2024. Microsoft&rsquo;s dedicated Azure region for the Kingdom was still in the pipeline at the time of writing, though Azure workloads are common here through hybrid arrangements.</p>
+<p>One practitioner warning before you assume parity with your current region: new regions launch with a subset of managed services, and the gap lands exactly where it hurts. Check the service availability matrix for every managed database, queue and ML endpoint on your bill of materials before committing dates to anyone. In the KSA landing zones we scope, that matrix check is step one, because a single missing managed service can add a quarter to a migration.</p>
+<h2 id="start-from-the-data-map-and-let-it-set-the-order-of-work">Start from the data map and let it set the order of work</h2>
+<p>Teams that start with infrastructure end up moving the wrong things first. The sequence that works:</p>
+<ol>
+<li><strong>Build the data map:</strong> Every store, every pipeline, every third party, classified as personal, sensitive or neither. This document later becomes your record of processing and the raw material for every risk assessment, so it earns its keep twice.</li>
+<li><strong>Draw the split line:</strong> Decide, field by field where necessary, what must live in-Kingdom and what can lawfully cross borders under the Saudi SCCs with a defensible assessment behind it.</li>
+<li><strong>Choose the pattern</strong> from the table above, then prove it with one real tenant before scaling the approach.</li>
+<li><strong>Land the core:</strong> primary database, object storage, backups and DR, all in-region.</li>
+<li><strong>Chase the long tail:</strong> logging, support access, the subprocessor cull, the analytics split.</li>
+<li><strong>Close the governance loop:</strong> appoint a data protection officer if you meet the triggers (large-scale processing of sensitive data and continuous cross-border transfers are among them), register on SDAIA&rsquo;s National Data Governance Platform, and assemble the evidence pack, because the Saudi enterprise buyers who forced this migration will ask to see it.</li>
+</ol>
+<p>For a mid-sized B2B platform this typically runs two to three quarters, and the long tail consumes more of that time than the database move itself. The work sits at the intersection of legal, infrastructure and product, which is why we treat it as a digital transformation programme with an owner and a budget rather than a ticket in the platform backlog.</p>
+<p>Nobody actually chose the single global database. It accumulated during an era when the location of a row carried no legal weight. In Saudi Arabia that era ended on a specific date, the enforcement record confirms it, and the platforms treating residency as a design input are already winning the deals that residency-as-an-afterthought keeps losing.</p>
+<p>We help SaaS teams work through exactly this: mapping the data, choosing the pattern, building the KSA landing zone and re-plumbing the pipelines around it, with honest advice about which corners can be cut and which ones SDAIA will eventually find. Ready to re architect for the Kingdom before your next enterprise deal forces the timeline? Talk to us and we will walk through your data map together.</p>
+
+  <div class="article-share">
+    <span class="article-share-label">Share this article</span>
+    <div class="article-share-row">
+      <a class="share-btn" id="copyLink" href="#" role="button"
+        aria-label="Copy link to article"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect
+            x="9" y="9" width="13" height="13" rx="2" /><path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></svg><span>Copy link</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://twitter.com/intent/tweet?text=The&#43;Death&#43;of&#43;the&#43;Global&#43;Database%3A&#43;How&#43;to&#43;Re-Architect&#43;Your&#43;SaaS&#43;Platform&#43;for&#43;KSA&#43;PDPL&url=%2fblog%2fdeath-of-the-global-database%2f"
+        aria-label="Share on X"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
+          aria-hidden="true"><path
+            d="M18.9 1.2h3.7l-8.1 9.3L24 22.8h-7.5l-5.9-7.7-6.7 7.7H.2l8.7-9.9L0 1.2h7.7l5.3 7 6-7zm-1.3 19.4h2L6.5 3.3h-2.2l13.3 17.3z" /></svg><span>X</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblog%2fdeath-of-the-global-database%2f"
+        aria-label="Share on LinkedIn"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
+          aria-hidden="true"><path
+            d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.3A1.8 1.8 0 1 1 8.3 6.5a1.8 1.8 0 0 1-1.8 1.8zM19 19h-3v-4.8c0-1.2-.5-2-1.5-2s-1.7.9-1.7 2.1V19h-3v-9h3v1.2a3 3 0 0 1 2.7-1.5c2 0 3.5 1.3 3.5 4.1z" /></svg><span>LinkedIn</span></a>
+      <a class="share-btn" target="_blank" rel="noopener"
+        href="https://api.whatsapp.com/send?text=The&#43;Death&#43;of&#43;the&#43;Global&#43;Database%3A&#43;How&#43;to&#43;Re-Architect&#43;Your&#43;SaaS&#43;Platform&#43;for&#43;KSA&#43;PDPL%20%2fblog%2fdeath-of-the-global-database%2f"
+        aria-label="Share on WhatsApp"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"
+          aria-hidden="true"><path
+            d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm4.53 12.98c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z" /></svg><span>WhatsApp</span></a>
+    </div>
+  </div>
+  <div class="article-tags-row">
+    <span class="at-label">Tags:</span>
+    <a class="tag-chip" href="../../blog/tags/digital-transformation/">#Digital Transformation</a>
+    <a class="tag-chip" href="../../blog/tags/saas/">#SaaS</a>
+    <a class="tag-chip" href="../../blog/tags/pdpl/">#PDPL</a>
+    <a class="tag-chip" href="../../blog/tags/saudi-arabia/">#Saudi Arabia</a>
+  </div>
+  <div class="article-author-box">
+    <span class="author-avatar" aria-hidden="true">[0 1 Waqas]</span>
+    <div class="author-box-text">
+      <p class="author-name">Written by <strong>Waqas Azam</strong></p>
+      <p class="author-bio">Software Disruption – FZCO, Dubai. Building data platforms, AI systems, and compliance-grade
+        software across the GCC.</p>
+      <div class="author-box-links">
+        <a href="../../team/index.html">Meet the team</a>
+        <a href="../../contact/index.html">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="section related-posts">
+  <div class="container">
+    <span class="eyebrow center">Keep Reading</span>
+    <h2 class="section-title">Related Articles</h2>
+    <div class="blog-grid"><article class="blog-card reveal">
+  <a class="blog-thumb" href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">
+    <img src="../../assets/img/blog-17.jpg" alt="Odoo Implementation and Customization in Saudi Arabia: What Has to Work Before ZATCA Accepts the Invoice" loading="lazy">
+    <span class="thumb-badge">Odoo</span>
+  </a>
+  <div class="blog-body">
+    <p class="blog-meta">
+      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>By <strong>Waqas Azam</strong></span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 19, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>11 min</span>
+    </p>
+    <h3><a href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">Odoo Implementation and Customization in Saudi Arabia: What Has to Work Before ZATCA Accepts the Invoice</a></h3>
+    <p class="blog-excerpt">A Saudi company can have Odoo installed, Accounting configured and invoices coming out correctly on screen, yet still have work left before its …</p>
+    <a class="link-more" href="../../blog/odoo-implementation-and-customization-in-saudi-arabia-what-has-to-work-before-zatca-accepts-the-invoice/">Read Article <span>&#8594;</span></a>
+  </div>
+</article><article class="blog-card reveal">
+  <a class="blog-thumb" href="../../blog/e-invoicing-penalties-saudi-arabia/">
+    <img src="../../assets/img/blog-einvoicing.jpg" alt="E-Invoicing Penalties in Saudi Arabia: What ZATCA Non-Compliance Actually Costs You" loading="lazy">
+    <span class="thumb-badge">Software Development</span>
+  </a>
+  <div class="blog-body">
+    <p class="blog-meta">
+      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>By <strong>Waqas Azam</strong></span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 14, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>4 min</span>
+    </p>
+    <h3><a href="../../blog/e-invoicing-penalties-saudi-arabia/">E-Invoicing Penalties in Saudi Arabia: What ZATCA Non-Compliance Actually Costs You</a></h3>
+    <p class="blog-excerpt">A production certificate expires on a Thursday afternoon. Nobody notices, because the billing system carries on exactly as before. PDFs still print. …</p>
+    <a class="link-more" href="../../blog/e-invoicing-penalties-saudi-arabia/">Read Article <span>&#8594;</span></a>
+  </div>
+</article><article class="blog-card reveal">
+  <a class="blog-thumb" href="../../blog/ai-readiness-gcc-enterprises/">
+    <img src="../../assets/img/blog-ai-readiness.jpg" alt="AI Readiness for GCC Enterprises: Fix Your Data Before You Buy the Model" loading="lazy">
+    <span class="thumb-badge">Artificial Intelligence</span>
+  </a>
+  <div class="blog-body">
+    <p class="blog-meta">
+      <svg class="ico" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <span>By <strong>Waqas Azam</strong></span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>Sep 8, 2026</span>
+      <span class="meta-sep" aria-hidden="true">&#183;</span>
+      <span>2 min</span>
+    </p>
+    <h3><a href="../../blog/ai-readiness-gcc-enterprises/">AI Readiness for GCC Enterprises: Fix Your Data Before You Buy the Model</a></h3>
+    <p class="blog-excerpt">An enterprise in Dubai buys 200 Copilot seats. Six months later, adoption is at 12% and the steering committee is asking why. The answer is almost …</p>
+    <a class="link-more" href="../../blog/ai-readiness-gcc-enterprises/">Read Article <span>&#8594;</span></a>
+  </div>
+</article>
+    </div>
+  </div>
+</section>
+<section class="section cta-band">
+  <div class="container" style="text-align:center;max-width:880px">
+    <span class="eyebrow light center">Ready to Disrupt Digitally</span>
+    <h2 class="section-title">Ready to Disrupt Digitally</h2>
+    <p class="lead" style="margin-bottom:34px">Schedule your free consultation and start building smarter, scalable
+      solutions.</p>
+    <div class="hero-cta-row" style="justify-content:center"><a class="btn btn-orange btn-lg"
+        href="../../contact/index.html">Book free consultation</a></div>
+  </div>
+</section>
+<script>
+  (function () {
+    var bar = document.getElementById("readingProgressBar");
+    if (bar) {
+      function tick() {
+        var h = document.documentElement;
+        var sc = h.scrollTop || document.body.scrollTop;
+        var m = h.scrollHeight - h.clientHeight;
+        bar.style.width = (m > 0 ? (sc / m) * 100 : 0) + "%";
+      }
+      window.addEventListener("scroll", tick, { passive: true });
+      window.addEventListener("resize", tick, { passive: true });
+      tick();
+    }
+    var copy = document.getElementById("copyLink");
+    if (copy) {
+      var original = copy.innerHTML;
+      copy.addEventListener("click", function (e) {
+        e.preventDefault();
+        var url = location.href.split("#")[0];
+        var done = function () {
+          copy.classList.add("copied");
+          copy.innerHTML = '<svg class="ico" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>Copied!</span>';
+          setTimeout(function () {
+            copy.classList.remove("copied");
+            copy.innerHTML = original;
+          }, 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done).catch(function () { fallback(url); done(); });
+        } else { fallback(url); done(); }
+        function fallback(t) {
+          var ta = document.createElement("textarea");
+          ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); } catch (err) {}
+          document.body.removeChild(ta);
+        }
+      });
+    }
+  })();
+</script><footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <a class="logo footer-logo" href="../../index.html">
+            <img src="../../assets/img/loggo-footer.png" alt="Software Disruption logo" width="60" height="60">
+          </a>
+          <p>Software Disruption – FZCO is a Dubai-based AI and data engineering company helping enterprises build scalable, data-driven software solutions across the GCC.</p>
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/company/software-disruption/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.5c0-1.45-.03-3.35-2.05-3.35-2.05 0-2.35 1.6-2.35 3.2V21H9z"/></svg></a>
+            <a href="https://wa.me/971557529787" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm4.53 12.98c-.25-.12-1.47-.72-1.69-.81-.23-.08-.4-.12-.56.13-.17.25-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.55.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.6.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="../../about/index.html">About Us</a></li>
+            <li><a href="../../why-us/index.html">Why Us</a></li>
+            <li><a href="../../how-we-work/index.html">How We Work</a></li>
+            <li><a href="../../team/index.html">Our Team</a></li>
+            <li><a href="../../careers/index.html">Careers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resource</h4>
+          <ul>
+            <li><a href="../../blog/index.html">Blog</a></li>
+            <li><a href="../../case-studies/index.html">Case Studies</a></li>
+            <li><a href="../../testimonials/index.html">Client Testimonials</a></li>
+            <li><a href="../../faq/index.html">FAQs</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>What We Do</h4>
+          <ul>
+            <li><a href="../../services/ai-machine-learning/index.html">AI &amp; Machine Learning</a></li>
+            <li><a href="../../services/data-engineering/index.html">Data Engineering</a></li>
+            <li><a href="../../services/devops-cloud/index.html">DevOps / Cloud</a></li>
+            <li><a href="../../services/digital-transformation/index.html">Digital Transformation</a></li>
+            <li><a href="../../services/software-consulting/index.html">Software Consulting</a></li>
+            <li><a href="../../services/odoo-partner/index.html">Odoo Partner</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul class="footer-contact">
+            <li><strong>Phone</strong><a href="tel:+971557529787">+971-557529787</a></li>
+            <li><strong>Email</strong><a href="mailto:waqas@softwaredisruption.com">waqas@softwaredisruption.com</a></li>
+            <li><strong>Address</strong><span>IFZA Business Park, DDP, PREMISES NO: 35039-001 Dubai</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Software Disruption - FZCO. All Rights Reserved.</p>
+        <div class="footer-legal"><a href="../../privacy/index.html">Privacy Policy</a><a href="../../terms/index.html">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+<script src="../../assets/js/search-index.js"></script>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
